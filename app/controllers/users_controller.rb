@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
+  before_action :require_login, only: %i[update edit destroy]
+
   def show
   end
 
@@ -22,7 +26,6 @@ class UsersController < ApplicationController
 
   def update
   end
-
 
   private
 
