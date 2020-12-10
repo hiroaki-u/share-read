@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def new
   end
 
@@ -15,6 +16,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session[:user_id] = nil
+    redirect_to root_url
+    flash[:success] = "ログアウトしました"
   end
 
   private
@@ -22,7 +26,7 @@ class SessionsController < ApplicationController
   def login(email, password)
     @user = User.find_by(email: email)
     if @user && @user.authenticate(password)
-      session[:id] = @user.id
+      session[:user_id] = @user.id
       return true
     else
       return false
