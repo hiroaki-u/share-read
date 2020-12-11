@@ -23,6 +23,7 @@
       <% else %>
           <li class="nav-item"><%= link_to "新規登録", signup_path %></li>
           <li class="nav-item"><%= link_to "ログイン", login_path %></li>
+          <li class="nav-item"><%= link_to "ゲストログイン", user_guest_sign_in_path, method: :post %></li>
       <% end %>
       </ul>
     </div>
