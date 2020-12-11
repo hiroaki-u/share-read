@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_url
       flash[:notice] = "ユーザー登録完了しました。"
+      session[:user_id] = @user.id
     else
       render :new
       flash[:notice] = "ユーザー登録ができませんでした。"
