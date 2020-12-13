@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 
   #ゲストユーザーログイン
   post 'guest_login', to: "guest_sessions#create"
+  resources :reviews
 end
