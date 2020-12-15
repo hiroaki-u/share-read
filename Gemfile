@@ -58,3 +58,6 @@ gem 'kaminari'
 
 #メッセージの日本語化
 gem 'rails-i18n'
+
+#楽天apiの取得
+gem 'rakuten_web_service'

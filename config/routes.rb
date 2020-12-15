@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'books/search', to: "books#search"
+  resources :books, only: %i[show]
+
   root to: 'toppages#index'
   resources :users, only: %i[show create edit update]
   get "signup", to: "users#new"
