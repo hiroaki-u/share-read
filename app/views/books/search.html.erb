@@ -1,12 +1,12 @@
-<h1>Rakuserach</h1>
-<div class='content'>
-  <div id="search-box">
-    <%= form_with url: books_search_path, method: :get, local: true do |f| %>
-        <%= text_field_tag :keyword, "",  id: "good_search", name: "keyword", placeholder: "キーワードを打ち込んでください", style: "width: 200px;"%><button title="検索" type="submit">検索</button>
+<%= form_tag(books_search_path, method: :get, class: 'form-inline') do %>
+  <%= text_field_tag :title, @title, class: 'form-control', placeholder:'書籍タイトル', size: 40 %>
+  <%= submit_tag '商品を検索', class: 'btn'%>
+<% end %>
+<% if @books %>
+  <% @books.each do |book| %>
+    <p><%= book.title %></p>
+    <%= form_with(model: @book, local:true) do |f| %>
+      <%= link_to image_tag(book.image_url), book_path(book.isbn) %>
     <% end %>
-  </div>
-  <h2>検索結果</h2>
-  <div>
-    <%= render "partial/book_list" %>
-  </div>
-</div>
+  <% end %>
+<% end %>
