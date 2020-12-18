@@ -13,21 +13,14 @@ class BooksController < ApplicationController
       })
       results.each do |result|
         book = Book.new(read(result))
-        @books << book
+        bussiness_book_id = ["001001", "001005", "001006", "001008", "001028" ]
+        if bussiness_book_id.any? {|i| book.book_genre_id.include?(i)}
+          @books << book
+        end
       end
     end
     @books.each do |book|
       book.save
-    end
-  end
-
-  def create
-    @book = Book.find_or_initialize_by(isbn: params[:isbn])
-
-    unless @book.present?
-      results = RakutenWebService::Books::Book.search(isbn: @book.isbn)
-      @book = Book.new(read(results.first))
-      @book.save
     end
   end
 
@@ -38,12 +31,13 @@ class BooksController < ApplicationController
     url = result["itemUrl"]
     isbn = result["isbn"]
     image_url = result["mediumImageUrl"].gsub('?_ex=120x120', '')
-    
+    book_genre_id = result["booksGenreId"]
     {
       title: title,
       url: url,
       isbn: isbn,
-      image_url: image_url
+      image_url: image_url,
+      book_genre_id: book_genre_id
     }
   end
 end
