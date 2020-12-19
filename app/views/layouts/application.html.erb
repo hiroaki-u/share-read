@@ -21,11 +21,12 @@
   <body>
     <div id="wrap">
       <%= render 'partial/header' %>
+      <%= render 'partial/search_bar' %>
       <div class="container">
         <%= render "partial/flash_message" %>
         <%= yield %>
-      <%= render 'partial/footer' %>
       </div>
+      <%= render 'partial/footer' %>
     </div>
   </body>
 </html>

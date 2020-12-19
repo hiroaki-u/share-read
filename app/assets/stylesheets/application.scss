@@ -1,15 +1,291 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/*----------------------------------------------------------------------------------*/
+/*--共通レイアウト--*/
+/*----------------------------------------------------------------------------------*/
+
+/*-----------------------*/
+/*--文字--*/
+/*-----------------------*/
+a { color: #000; }
+.txt-xxs { font-size: 12px; }
+.txt-xs{ font-size: 16px; }
+.txt-s{ font-size: 20px; }
+.txt-m{ font-size: 24px; }
+.txt-l{ font-size: 30px; }
+.txt-xl{ font-size: 36px; }
+.txt-xxl{ font-size: 42px; }
+
+.txt-black { color: #000000; }
+.txt-shadow { text-shadow: 1px 2px 3px #808080; }
+
+/*-----------------------*/
+/*--画像--*/
+/*-----------------------*/
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #dcdcdc;
+}
+
+.user-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+}
+
+.book-image {
+  width: 200px;
+  height: 200px;
+  display: block;
+  border: 1px solid #dcdcdc;
+}
+/*画面サイズ変更時の画像*/
+
+@media screen and (max-width: 992px) { 
+  .user-image {
+    width: 65px;
+    height: 65px;
+    border-radius: 7px;
+  }
+}
+
+@media screen and (max-width: 767px) { 
+  .user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin: -10px;
+  }
+  .row {
+    margin: 0;
+  }
+}
+/*-----------------------*/
+/*--レビューの背景部分--*/
+/*-----------------------*/
+.review-bg {
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px 10px;
+}
+
+/*-----------------------*/
+/*--ボタン--*/
+/*-----------------------*/
+.btn-top {
+  display: inline-block;
+  padding: 0.5em 1.5em;
+  color: #000;
+  background-color: rgba(245, 222, 179, 0.3);
+  box-shadow: 1px 1px 2px;
+  margin-bottom: 10px;
+}
+
+.btn-top:hover {
+  background-color: rgba(245, 222, 179, 1);
+  box-shadow: 0px 0px 0px;
+}
+
+.btn-link {
+  border: 1px solid #007bff;
+}
+
+.submit-btn {
+  border-style: none;
+  position: relative;
+  background-color: #fff;
+  right: 35px;
+}
+
+.submit-btn:hover {
+  cursor: pointer;
+}
+
+.btn-gray {
+  display: inline-block;
+  padding: 0.5em 1.5em;
+  color: #000;
+  transition: .4s;
+  opacity:0.8;
+  background-color: #dcdcdc;
+  box-shadow: 2px 2px 3px;
+}
+
+/*----------------------------------------------------------------------------------*/
+/*--各ページのレイアウト--*/
+/*----------------------------------------------------------------------------------*/
+/*-----------------------*/
+/*--ページ全体--*/
+/*-----------------------*/
+
+body {
+  background-color: #f5f5f5;
+  word-wrap: break-word;
+}
+
+#wrap {
+  overflow: hidden;
+}
+
+
+/*-----------------------*/
+/*--ヘッダー--*/
+/*-----------------------*/
+/*ナビバー*/
+header {
+  margin-bottom: 60px;
+}
+
+.navbar {
+  box-shadow:0 2px 10px #999;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+/*-----------------------*/
+/*--検索バー-*/
+/*-----------------------*/
+.search_bar {
+  background-color: #eeeeee;
+  padding: 20px 0;
+  box-sizing:border-box;
+} 
+
+/*-----------------------*/
+/*--フッター--*/
+/*-----------------------*/
+footer {
+  background-color: #fff;
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  line-height: 50px;
+}
+
+footer small {
+  color: gray
+}
+
+/*-----------------------*/
+/*--トップページ--*/
+/*-----------------------*/
+/*共通*/
+
+.search-label {
+  line-height: 40px;
+}
+
+.topwrapper {
+  position: relative;
+  top: -48px;
+  background-image: url("toppage.jpg");
+  height:600px;
+  background-size: cover;
+  background-position: center;
+}
+
+
+/*ログイン時*/
+
+.top-message {
+  position: relative;
+  top: 260px;
+  left: 20px;
+  color: white;
+  width: 90%;
+}
+
+.search-bar {
+  width: 200px;
+}
+
+/*非ログイン時*/
+.headline {
+  position: relative;
+  top: 280px;
+  left: 50px;
+  color: #fff;
+}
+
+/*----------------------------------------------------------------------------------*/
+/*--パーシャルのレイアウト--*/
+/*----------------------------------------------------------------------------------*/
+/*-----------------------*/
+/*--フラッシュメッセージ--*/
+/*-----------------------*/
+.f-message {
+  position: fixed;
+  top: 57px;
+  left: 5px;
+  z-index: 9;
+  border: 1px solid #dcdcdc;
+}
+
+/*-----------------------*/
+/*--本のレビュー内容--*/
+/*-----------------------*/
+.edit-trash-position {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-content {
+  margin-left: 20px;
+}
+
+.review-end {
+  display: flex;
+}
+
+/*-----------------------*/
+/*--プロフィール--*/
+/*-----------------------*/
+.profile-detail {
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  width:90% ;
+}
+
+.profile-end {
+  display: flex;
+}
+
+/*-----------------------*/
+/*--各ユーザーの表示--*/
+/*-----------------------*/
+.user-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*-----------------------*/
+/*--コメント--*/
+/*-----------------------*/
+.comment {
+  margin: 10px 0 0 100px; 
+}
+
+@media screen and (max-width: 992px) { 
+  .comment {
+    margin: 10px 0 0 90px; 
+  }
+}
+
+@media screen and (max-width: 767px) { 
+  .comment {
+    margin: 10px 0 0 55px; 
+  }
+}
+
+.comment-user {
+  margin-left: 10px;
+  display: flex; 
+}
+.comment-user-name {
+  margin-left: 15px;
+}
+
