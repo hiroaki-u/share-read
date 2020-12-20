@@ -12,10 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_12_20_063200) do
 
-  create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "books", primary_key: "isbn", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title"
     t.string "author"
-    t.bigint "isbn"
     t.string "url"
     t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
@@ -45,6 +44,5 @@ ActiveRecord::Schema.define(version: 2020_12_20_063200) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"
 end

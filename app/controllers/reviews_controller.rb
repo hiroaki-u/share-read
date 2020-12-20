@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @book = Book.find_by(id: params[:book_id])
+    @book = Book.find_by(isbn: params[:book_id])
     @review = current_user.reviews.build(review_params)
     if @review.save
       redirect_to book_review_path(@book, @review)

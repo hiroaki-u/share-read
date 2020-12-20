@@ -1,7 +1,3 @@
-<%= form_tag(books_search_path, method: :get, class: 'form-inline') do %>
-  <%= text_field_tag :title, @title, class: 'form-control', placeholder:'書籍タイトル', size: 40 %>
-  <%= submit_tag '商品を検索', class: 'btn'%>
-<% end %>
 <% if @books %>
   <% @books.each do |book| %>
     <p><%= book.title %></p>

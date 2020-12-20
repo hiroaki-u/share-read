@@ -7,7 +7,6 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find_by(isbn: params[:id])
-    @book.id = @book.isbn
   end
   
   def search
@@ -26,8 +25,9 @@ class BooksController < ApplicationController
       end
     end
     @books.each do |book|
-      book.save
-      book.id = book.isbn
+      unless book.present?
+        book.save
+      end
     end
   end
 
