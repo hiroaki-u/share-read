@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   get 'books/search', to: "books#search"
-  resources :books, only: %i[show]
+  resources :books, only: %i[show new create] do 
+    resources :reviews
+  end
 
   root to: 'toppages#index'
   resources :users, only: %i[show create edit update]
@@ -13,5 +15,5 @@ Rails.application.routes.draw do
 
   #ゲストユーザーログイン
   post 'guest_login', to: "guest_sessions#create"
-  resources :reviews
+  
 end

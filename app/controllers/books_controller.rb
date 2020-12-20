@@ -1,7 +1,13 @@
 class BooksController < ApplicationController
 
+  def new
+    @review = current_user.reviews.new
+    @book = @review.book
+  end
+
   def show
     @book = Book.find_by(isbn: params[:id])
+    @book.id = @book.isbn
   end
   
   def search
@@ -21,6 +27,7 @@ class BooksController < ApplicationController
     end
     @books.each do |book|
       book.save
+      book.id = book.isbn
     end
   end
 

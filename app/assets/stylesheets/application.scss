@@ -159,8 +159,6 @@ footer {
   background-color: #fff;
   height: 50px;
   width: 100%;
-  position: absolute;
-  bottom: 0;
   line-height: 50px;
 }
 
@@ -178,14 +176,12 @@ footer small {
 }
 
 .topwrapper {
-  position: relative;
-  top: -48px;
   background-image: url("toppage.jpg");
   height:600px;
   background-size: cover;
   background-position: center;
+  height: 400px;
 }
-
 
 /*ログイン時*/
 
@@ -204,7 +200,7 @@ footer small {
 /*非ログイン時*/
 .headline {
   position: relative;
-  top: 280px;
+  top: 180px;
   left: 50px;
   color: #fff;
 }

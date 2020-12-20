@@ -11,13 +11,15 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = Review.new
+    @review = current_user.reviews.new
+    @book = Book.find_by(isbn: params[:book_id])
   end
 
   def create
-    @review = current_user.build(review_params)
+    @book = Book.find_by(id: params[:book_id])
+    @review = current_user.reviews.build(review_params)
     if @review.save
-      redirect_to review_url
+      redirect_to book_review_path(@book, @review)
     else
       render :new
     end
@@ -36,7 +38,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:reveiw).permit(:content)
+    params.require(:review).permit(:content, :book_id)
   end
 
   def set_review
