@@ -1,0 +1,31 @@
+
+<%= link_to book_review_url(review.book, review) do %>
+  <div class="book_review_box">
+    <div class="review-content row">
+      <div class="review-content-detail col-8">
+        <div class="review-content-user">
+          <div classs="mr-2"> 
+            <% if review.user.user_image? %>
+              <%= image_tag(book.user.user_image.url, class: "user-image") %>
+            <% else %>
+              <%= image_tag("user_default.png", class: "user-image") %>
+            <% end %>
+          </div>
+          <div class="user-name">
+            <p><%= review.user.name %></p>
+            <p><%= review.updated_at %></p>
+          </div>
+        </div>
+        <p><%= review.book.title %></p>
+        <p><%= review.content %></p>
+      </div>
+      <div class="review-content-image col-4">
+        <%= image_tag(review.book.image_url, class: "book-image") %>
+      </div>
+    </div>
+    <div class="reactions">
+      <a>いいね</a>
+      <a>コメント</a>
+    </div>
+  </div>
+<% end %>

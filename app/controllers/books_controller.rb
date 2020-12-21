@@ -1,10 +1,5 @@
 class BooksController < ApplicationController
 
-  def new
-    @review = current_user.reviews.new
-    @book = @review.book
-  end
-
   def show
     @book = Book.find_by(isbn: params[:id])
   end
@@ -25,7 +20,7 @@ class BooksController < ApplicationController
       end
     end
     @books.each do |book|
-      unless book.present?
+      unless Book.all.include?(book)
         book.save
       end
     end
@@ -41,6 +36,7 @@ class BooksController < ApplicationController
     book_genre_id = result["booksGenreId"]
     {
       title: title,
+      author: author,
       url: url,
       isbn: isbn,
       image_url: image_url,

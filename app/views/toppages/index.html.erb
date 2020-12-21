@@ -1,18 +1,31 @@
 <% if logged_in? %>
-  <div class="topwrapper">
-
-  </div>
-  <div class="container">
-    <p class="txt-m"><i class="fas fa-book-open"></i> 最近のレビュー</p>
-  </div>
-
-<% else %>
   <div class="mb-5 topwrapper">
-    <div class="headline">
+    <div class="toppage-message">
       <p class="txt-shadow txt-xxl">読んだ本をシェアしよう！</p>
     </div>
   </div>
   <div class="container">
-    <p class="txt-m"><i class="fas fa-book-open"></i> 最近のレビュー</p>
+    <div class="headline mb-5">
+      <p class="txt-l mb-1"> 最近のレビュー</p>
+      <p class="headline-bar"></p>
+    </div>
+    <div class="book_review_boxs">
+      <% @reviews.first(4).each do |review| %>
+        <%= render "partial/book_review", review: review %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="mb-5 topwrapper">
+    <div class="toppage-message">
+      <p class="txt-shadow txt-xxl">読んだ本をシェアしよう！</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="headline">
+      <p class="txt-m"> 最近のレビュー</p>
+      <p class="headline-bar"></p>
+    </div>
+      <%= render "partial/book_review", reviews: @reviews %>
   </div>
 <% end %>
