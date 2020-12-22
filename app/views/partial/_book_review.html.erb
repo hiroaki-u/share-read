@@ -22,21 +22,21 @@
         <%= image_tag(review.book.image_url, class: "book-image") %>
       </div>
     </div>
-    <div class="review-sub mt-2">
-      <div class="reactions">
-        <p class="inline-block">いいね</p>
-        <p class="inline-block">コメント</p>
-      </div>
-      <div class="edit-delete">
-        <% if current_user == review.user %>
-          <%= link_to edit_book_review_path(review.book, review), class: 'btn btn-info' do %>
-            <i class="far fa-edit"></i>
-          <% end %>
-          <%= link_to [review.book, review], method: :delete, data: { confirm: "削除しますか？", cancel: "やめる", commit: "削除する"}, title: "削除確認", class: 'btn btn-danger' do  %>
-            <i class="fas fa-trash"></i>
-          <% end %>
-        <% end %>  
-      </div>
-    </div>
   <% end %>
+  <div class="review-sub mt-2">
+    <div class="reactions">
+      <p class="inline-block"><%= render "favorites/favorite_button", review: review %></p>
+      <p class="inline-block">コメント</p>
+    </div>
+    <div class="edit-delete">
+      <% if current_user == review.user %>
+        <%= link_to edit_book_review_path(review.book, review), class: 'btn btn-info' do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+        <%= link_to [review.book, review], method: :delete, data: { confirm: "削除しますか？", cancel: "やめる", commit: "削除する"}, title: "削除確認", class: 'btn btn-danger' do  %>
+          <i class="fas fa-trash"></i>
+        <% end %>
+      <% end %>  
+    </div>
+  </div>
 </div>

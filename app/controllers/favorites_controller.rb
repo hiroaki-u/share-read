@@ -12,6 +12,7 @@ class FavoritesController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  private
   def set_review
     @review = Review.find(params[:review_id])
   end

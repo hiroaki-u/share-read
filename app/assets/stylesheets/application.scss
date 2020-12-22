@@ -235,7 +235,7 @@ footer small {
   border: 1px solid #dcdcdc;
 }
 
-.book_review_box:hover {
+.review-content:hover {
   opacity: 0.6;
 }
 
@@ -256,14 +256,14 @@ footer small {
   display: flex;
   justify-content: space-between;
 }
+.reactions {
+  display: flex;
+}
 
 .edit-delete {
   right: 15px;
 }
 
-.inline-block {
-  display: inline-block;;
-}
 
 /*-----------------------*/
 /*--プロフィール--*/

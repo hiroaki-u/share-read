@@ -17,9 +17,9 @@ Rails.application.routes.draw do
       get :favorites
     end
   end
-
-  resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
+  
 
   get 'books/search', to: "books#search"
   resources :books, only: %i[show] do 
