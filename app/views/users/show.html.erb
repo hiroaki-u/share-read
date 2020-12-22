@@ -6,24 +6,26 @@
       <% else %>
         <%= image_tag("user_default.png", class: "profile-image") %>
       <% end %>
-      <p>フォローボタン</p>
     </div>
     <div class="user-detail">
       <p class="txt-m"><%= @user.name %></p>
       <p>年齢：<%= user_age %> 歳</p>
       <p>性別：<%= @user.gender %></p>
+      <p><%= render "relationships/follow_button", user: @user %></p>
     </div>
   </div>
   <div class="introduction col-5">
     <p><%= simple_format(@user.introduction) %></p>
   </div>
-  <ul class="nav nav-tabs nav-justified mb-3">
-    <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">レビュー一覧 <span class="ml-2 badge badge-secondary"><%= @count_books %></span></a></li>
-    <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">お気に入りの投稿 <span class="ml-2 badge badge-secondary"><%= @count_books %></span></a></li>
-    <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">あとで読む  <span class="ml-2 badge badge-secondary"><%= @count_books %></span></a></li>
-    <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">フォロワー <span class="ml-2 badge badge-secondary"><%= @count_books %></span></a></li>
-    <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">フォロー中 <span class="ml-2 badge badge-secondary"><%= @count_books %></span></a></li>
-  </ul>
+  <div>
+    <ul class="nav nav-tabs nav-justified mb-3">
+      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">レビュー一覧 <span class="ml-2 badge badge-secondary"><%= @count_books %></span></a></li>
+      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">お気に入りの投稿 <span class="ml-2 badge badge-secondary"><%= @count_books %></span></a></li>
+      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">あとで読む  <span class="ml-2 badge badge-secondary"><%= @count_books %></span></a></li>
+      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">フォロワー <span class="ml-2 badge badge-secondary"><%= @count_books %></span></a></li>
+      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">フォロー中 <span class="ml-2 badge badge-secondary"><%= @count_books %></span></a></li>
+    </ul>
+  </div>
 </div>
 <div class="book_review_boxs">
   <% @reviews.each do |review| %>

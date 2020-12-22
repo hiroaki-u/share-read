@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'relationships/create'
-  get 'relationships/destroy'
   root to: 'toppages#index'
   resources :users, only: %i[show create edit update] do
     member do
-      post :followings
-      post :followers
+      get :followings
+      get :followers
     end
   end
+  resources :relationships, only: [:create, :destroy]
   get "signup", to: "users#new"
 
   get "login", to: "sessions#new"
