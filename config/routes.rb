@@ -1,19 +1,24 @@
 Rails.application.routes.draw do
 
+  get 'favorites/create'
+  get 'favorites/destroy'
   root to: 'toppages#index'
-  resources :users, only: %i[show create edit update] do
-    member do
-      get :followings
-      get :followers
-    end
-  end
-  resources :relationships, only: [:create, :destroy]
-  get "signup", to: "users#new"
 
+  get "signup", to: "users#new"
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
   post 'guest_login', to: "guest_sessions#create"
+
+  resources :users, only: %i[show create edit update] do
+    member do
+      get :followings
+      get :followers
+      get :favorites
+    end
+  end
+  resources :favorites, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   
 
   get 'books/search', to: "books#search"

@@ -5,6 +5,10 @@
 /*--文字--*/
 /*-----------------------*/
 a { color: #000; }
+a:hover {
+  text-decoration: none;
+  color: #000;
+}
 .txt-xxs { font-size: 12px; }
 .txt-xs{ font-size: 16px; }
 .txt-s{ font-size: 20px; }
@@ -231,6 +235,10 @@ footer small {
   border: 1px solid #dcdcdc;
 }
 
+.review-content:hover {
+  opacity: 0.6;
+}
+
 .review-content {
   margin: 0;
   border-bottom: 1px solid #e7e6e6;
@@ -248,14 +256,14 @@ footer small {
   display: flex;
   justify-content: space-between;
 }
+.reactions {
+  display: flex;
+}
 
 .edit-delete {
   right: 15px;
 }
 
-.inline-block {
-  display: inline-block;;
-}
 
 /*-----------------------*/
 /*--プロフィール--*/

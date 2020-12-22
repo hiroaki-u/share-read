@@ -15,16 +15,33 @@ class User < ApplicationRecord
   has_many :reverses_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverses_relationship, source: :user
   
+    # お気に入り機能のためのFavoriteテーブルとの関係
+    has_many :favorites
+    has_many :favorings, through: :favorites, source: :review
+
   def follow(other_user)
-    self.relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user
+    relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user
   end
 
   def unfollow(other_user)
-    relationship = self.relationships.find_by(follow_id: other_user.id)
-    relationship.destroy if relationship
+    relationship = relationships.find_by(follow_id: other_user.id)
+    relationship&.destroy
   end
 
   def following?(other_user)
-    self.followings.include?(other_user)
+    followings.include?(other_user)
+  end
+
+  def favor(other_review)
+    favorites.find_or_create_by(review_id: other_review.id)
+  end
+
+  def unfavor(other_review)
+    favorite = favorites.find_by(review_id: other_review.id)
+    favorite&.destroy
+  end
+
+  def favoring?(other_review)
+    favorings.include?(other_review)
   end
 end
