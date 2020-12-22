@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :require_login, only: %i[update edit destroy followings followers]
-  before_action :set_user, only: %i[show edit update followings followers self_user]
+  before_action :require_login, only: %i[update edit destroy followings followers favorites]
+  before_action :set_user, only: %i[show edit update followings followers favorites self_user]
   before_action :self_user, only: %i[edit update]
 
   def show
@@ -39,13 +39,15 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings.page(params[:page])
-    counts(@user)
+    @followings = @user.followings.order(id: :desc).page(params[:page]).per(9)
   end
 
   def followers
-    @followers = @user.followers.page(params[:page])
-    counts(@user)
+    @followers = @user.followers.order(id: :desc).page(params[:page]).per(9)
+  end
+
+  def favorites
+    @favorites = @user.favorings.order(updated_at: :desc).page(params[:page]).per(6)
   end
 
   private
