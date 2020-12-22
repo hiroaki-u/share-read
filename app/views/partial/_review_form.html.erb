@@ -1,5 +1,5 @@
 <div clsss="offset-sm-3">
-  <%= form_with(model: @review, local:true) do |f| %>
+  <%= form_with(model:[@book, @review], local:true) do |f| %>
   <%= render 'partial/error_messages', model: f.object %>
     <div class="form-group">
       <%= f.label :content, "レビュー内容" %>

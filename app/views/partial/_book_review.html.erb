@@ -1,12 +1,11 @@
-
-<%= link_to book_review_url(review.book, review) do %>
-  <div class="book_review_box">
+<div class="book_review_box">
+  <%= link_to book_review_url(review.book, review) do %>
     <div class="review-content row">
       <div class="review-content-detail col-8">
         <div class="review-content-user">
           <div classs="mr-2"> 
             <% if review.user.user_image? %>
-              <%= image_tag(book.user.user_image.url, class: "user-image") %>
+              <%= image_tag(review.user.user_image.url, class: "user-image") %>
             <% else %>
               <%= image_tag("user_default.png", class: "user-image") %>
             <% end %>
@@ -17,15 +16,27 @@
           </div>
         </div>
         <p><%= review.book.title %></p>
-        <p><%= review.content %></p>
+        <p><%= simple_format(strip_tags(review.content).truncate(10)) %></p>
       </div>
       <div class="review-content-image col-4">
         <%= image_tag(review.book.image_url, class: "book-image") %>
       </div>
     </div>
-    <div class="reactions">
-      <a>いいね</a>
-      <a>コメント</a>
+    <div class="review-sub mt-2">
+      <div class="reactions">
+        <p class="inline-block">いいね</p>
+        <p class="inline-block">コメント</p>
+      </div>
+      <div class="edit-delete">
+        <% if current_user == review.user %>
+          <%= link_to edit_book_review_path(review.book, review), class: 'btn btn-info' do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+          <%= link_to [review.book, review], method: :delete, data: { confirm: "削除しますか？", cancel: "やめる", commit: "削除する"}, title: "削除確認", class: 'btn btn-danger' do  %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        <% end %>  
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

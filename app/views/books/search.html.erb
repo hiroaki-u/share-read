@@ -1,8 +1,14 @@
-<% if @books %>
-  <% @books.each do |book| %>
-    <p><%= book.title %></p>
-    <%= form_with(model: @book, local:true) do |f| %>
-      <%= link_to image_tag(book.image_url), book_path(book.isbn) %>
+<div class="headline mb-5 mt-5">
+  <p class="txt-l mb-1">『<%= @title %>』の検索結果</p>
+  <p class="headline-bar"></p>
+</div>
+<div class="search-books">
+  <% if @books %>
+    <% @books.each do |book| %>
+      <div class="search-book">
+        <%= link_to image_tag(book.image_url, class:"book-image"), book_path(book.isbn) %>
+        <p><%= book.title %></p>
+      </div>
     <% end %>
   <% end %>
-<% end %>
+</div>

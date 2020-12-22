@@ -23,6 +23,7 @@ a { color: #000; }
 .profile-image {
   width: 200px;
   height: 200px;
+  border-radius: 15px;
   border: 1px solid #dcdcdc;
 }
 
@@ -34,10 +35,10 @@ a { color: #000; }
 }
 
 .book-image {
-  height: 200px;
-  display: block;
+  width: 100%;
   border: 1px solid #dcdcdc;
 }
+
 /*画面サイズ変更時の画像*/
 
 @media screen and (max-width: 992px) { 
@@ -109,6 +110,7 @@ a { color: #000; }
   background-color: #dcdcdc;
   box-shadow: 2px 2px 3px;
 }
+
 
 /*----------------------------------------------------------------------------------*/
 /*--各ページのレイアウト--*/
@@ -225,7 +227,7 @@ footer small {
 .f-message {
   position: fixed;
   top: 57px;
-  left: 5px;
+  right: 5px;
   z-index: 9;
   border: 1px solid #dcdcdc;
 }
@@ -234,11 +236,11 @@ footer small {
 /*--レヴュー内容--*/
 /*-----------------------*/
 .book_review_boxs {
-  display: flex;
+  display: grid;
+  grid-template: auto/ 50% 50% ;
 }
 
 .book_review_box {
-  width: 50%;
   margin: 0 0 20px 20px;
   padding: 15px;
   box-sizing: border-box;
@@ -258,6 +260,19 @@ footer small {
   display: flex;
 }
 
+.review-sub {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-delete {
+  right: 15px;
+}
+
+.inline-block {
+  display: inline-block;;
+}
+
 /*-----------------------*/
 /*--本のレビュー内容--*/
 /*-----------------------*/
@@ -275,11 +290,7 @@ footer small {
 /*--プロフィール--*/
 /*-----------------------*/
 .profile-detail {
-  border: 1px solid #dcdcdc;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-  width:90% ;
+  display: flex;
 }
 
 .profile-end {
@@ -319,5 +330,18 @@ footer small {
 }
 .comment-user-name {
   margin-left: 15px;
+}
+
+/*-----------------------*/
+/*--本の検索結果表示ページ--*/
+/*-----------------------*/
+.search-books {
+  display: grid;
+  grid-template: auto/ 20% 20% 20% 20% 20%;
+}
+
+.search-book {
+  width: 80%;
+  height: 350px;
 }
 

@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
   get 'books/search', to: "books#search"
-  resources :books, only: %i[show new create] do 
-    resources :reviews
+  resources :books, only: %i[show] do 
+    resources :reviews, except: %i[index]
+    collection do
+      get "reviews", to: "reviews#index"
+    end
   end
 
   root to: 'toppages#index'

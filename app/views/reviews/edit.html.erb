@@ -1,0 +1,17 @@
+<div class="text-center">
+  <p class="txt-xl mb-5 mt-5"><i class="far fa-edit"></i> 新規レビュー</p>
+</div>
+
+<div class="row">                                                                           
+  <div class="offset-sm-3 col-sm-6">
+    <%= form_with(model: [@book, @review], local:true) do |f| %>
+      <%= render 'partial/error_messages', model: f.object %>
+      <div class="form-group">
+        <%= f.label :content, "レビュー" %>
+        <%= f.text_area :content, class: "form-control", rows: 6 %>
+        <%= f.hidden_field :book_id, value: @book.isbn %>
+      </div>
+      <%= f.submit 'レビュー', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>
