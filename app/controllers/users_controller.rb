@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :require_login, only: %i[update edit destroy]
-  before_action :set_user, only: %i[show edit update]
+  before_action :require_login, only: %i[update edit destroy followings followers]
+  before_action :set_user, only: %i[show edit update followings followers self_user]
+  before_action :self_user, only: %i[edit update]
 
   def show
     @reviews = @user.reviews
@@ -37,10 +38,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def followings
+    @followings = @user.followings.page(params[:page])
+    counts(@user)
+  end
+
+  def followers
+    @followers = @user.followers.page(params[:page])
+    counts(@user)
+  end
+
   private
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def self_user
+    redirect_to root_url unless @user == current_user
   end
 
   def user_params
