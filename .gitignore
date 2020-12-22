@@ -38,3 +38,4 @@ yarn-debug.log*
 #追記
 /config/database.yml
 docker-compose.yml
+/public/uploads/*
