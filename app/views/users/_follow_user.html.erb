@@ -1,0 +1,22 @@
+<div class="user-list">
+  <% users.each do |user| %>
+    <div class="follow-user">
+      <div>
+        <% if user.user_image? %>
+          <%= image_tag(user.user_image.url, class: "user-image") %>
+        <% else %>
+          <%= image_tag("user_default.png", class: "user-image") %>
+        <% end %>
+        <%= user.name %>
+        <p>最近レビューした本</p>
+      </div>
+      <div class="user-review-books">
+        <% user.reviews.first(3).each do |review| %>
+          <div class="user-review-book">
+            <%= link_to (image_tag review.book.image_url, class: "book-image"), book_url(review.book) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

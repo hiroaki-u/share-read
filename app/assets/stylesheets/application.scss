@@ -59,56 +59,73 @@ a { color: #000; }
     margin: 0;
   }
 }
+
+/*-----------------------*/
+/*--見出し文字--*/
+/*-----------------------*/
+
+.headline {
+  text-align: center;
+  font-weight: bolder;
+}
+
+.headline-bar {
+  display: inline-block;
+  width: 40px;
+  border-bottom: 2px solid #000000;
+  margin:0 auto;
+}
+
 /*-----------------------*/
 /*--レビューの背景部分--*/
 /*-----------------------*/
-.review-bg {
-  background-color: white;
-  border-radius: 5px;
-  padding: 20px 10px;
-}
+// .review-bg {
+//   background-color: white;
+//   border-radius: 5px;
+//   padding: 20px 10px;
+// }
 
 /*-----------------------*/
 /*--ボタン--*/
 /*-----------------------*/
-.btn-top {
-  display: inline-block;
-  padding: 0.5em 1.5em;
-  color: #000;
-  background-color: rgba(245, 222, 179, 0.3);
-  box-shadow: 1px 1px 2px;
-  margin-bottom: 10px;
-}
+// .btn-top {
+//   display: inline-block;
+//   padding: 0.5em 1.5em;
+//   color: #000;
+//   background-color: rgba(245, 222, 179, 0.3);
+//   box-shadow: 1px 1px 2px;
+//   margin-bottom: 10px;
+// }
 
-.btn-top:hover {
-  background-color: rgba(245, 222, 179, 1);
-  box-shadow: 0px 0px 0px;
-}
+// .btn-top:hover {
+//   background-color: rgba(245, 222, 179, 1);
+//   box-shadow: 0px 0px 0px;
+// }
 
-.btn-link {
-  border: 1px solid #007bff;
-}
+// .btn-link {
+//   border: 1px solid #007bff;
+// }
 
-.submit-btn {
-  border-style: none;
-  position: relative;
-  background-color: #fff;
-  right: 35px;
-}
+// .submit-btn {
+//   border-style: none;
+//   position: relative;
+//   background-color: #fff;
+//   right: 35px;
+// }
 
-.submit-btn:hover {
-  cursor: pointer;
-}
+// .submit-btn:hover {
+//   cursor: pointer;
+// }
 
-.btn-gray {
-  display: inline-block;
-  padding: 0.5em 1.5em;
-  color: #000;
-  transition: .4s;
-  opacity:0.8;
-  background-color: #dcdcdc;
-  box-shadow: 2px 2px 3px;
-}
+// .btn-gray {
+//   display: inline-block;
+//   padding: 0.5em 1.5em;
+//   color: #000;
+//   transition: .4s;
+//   opacity:0.8;
+//   background-color: #dcdcdc;
+//   box-shadow: 2px 2px 3px;
+// }
 
 
 /*----------------------------------------------------------------------------------*/
@@ -126,7 +143,6 @@ body {
 #wrap {
   overflow: hidden;
 }
-
 
 /*-----------------------*/
 /*--ヘッダー--*/
@@ -171,10 +187,6 @@ footer small {
 /*-----------------------*/
 /*共通*/
 
-.search-label {
-  line-height: 40px;
-}
-
 .topwrapper {
   background-image: url("toppage.jpg");
   height:600px;
@@ -183,33 +195,6 @@ footer small {
   height: 400px;
 }
 
-.headline {
-  text-align: center;
-  font-weight: bolder;
-}
-
-.headline-bar {
-  display: inline-block;
-  width: 40px;
-  border-bottom: 2px solid #000000;
-  margin:0 auto;
-}
-
-/*ログイン時*/
-
-.top-message {
-  position: relative;
-  top: 260px;
-  left: 20px;
-  color: white;
-  width: 90%;
-}
-
-.search-bar {
-  width: 200px;
-}
-
-/*非ログイン時*/
 .toppage-message {
   position: relative;
   top: 180px;
@@ -232,7 +217,7 @@ footer small {
 }
 
 /*-----------------------*/
-/*--レヴュー内容--*/
+/*--レヴュー内容(_book_review)--*/
 /*-----------------------*/
 .book_review_boxs {
   display: grid;
@@ -273,19 +258,6 @@ footer small {
 }
 
 /*-----------------------*/
-/*--本のレビュー内容--*/
-/*-----------------------*/
-.edit-trash-position {
-  display: flex;
-  justify-content: space-between;
-}
-
-
-.review-end {
-  display: flex;
-}
-
-/*-----------------------*/
 /*--プロフィール--*/
 /*-----------------------*/
 .profile-detail {
@@ -297,39 +269,61 @@ footer small {
 }
 
 /*-----------------------*/
-/*--各ユーザーの表示--*/
+/*--ユーザーのプロフィールページ--*/
 /*-----------------------*/
-.user-head {
-  display: flex;
-  justify-content: space-between;
+.user-page-bar {
+  border-top:1px solid #dcdcdc;
+  border-bottom:1px solid #dcdcdc;
+}
+
+.user-page-bar ul {
+  width: 100%;
+}
+
+.user-page-bar ul li {
+  width:20%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.user-page-bar ul li a {
+  padding: 20px 0;
+}
+
+.user-page-bar ul li a:hover {
+  background-color: #bbddeb;
+}
+
+.page-active {
+  background-color: #99CCE0;
 }
 
 /*-----------------------*/
 /*--コメント--*/
 /*-----------------------*/
-.comment {
-  margin: 10px 0 0 100px; 
-}
+// .comment {
+//   margin: 10px 0 0 100px; 
+// }
 
-@media screen and (max-width: 992px) { 
-  .comment {
-    margin: 10px 0 0 90px; 
-  }
-}
+// @media screen and (max-width: 992px) { 
+//   .comment {
+//     margin: 10px 0 0 90px; 
+//   }
+// }
 
-@media screen and (max-width: 767px) { 
-  .comment {
-    margin: 10px 0 0 55px; 
-  }
-}
+// @media screen and (max-width: 767px) { 
+//   .comment {
+//     margin: 10px 0 0 55px; 
+//   }
+// }
 
-.comment-user {
-  margin-left: 10px;
-  display: flex; 
-}
-.comment-user-name {
-  margin-left: 15px;
-}
+// .comment-user {
+//   margin-left: 10px;
+//   display: flex; 
+// }
+// .comment-user-name {
+//   margin-left: 15px;
+// }
 
 /*-----------------------*/
 /*--本の検索結果表示ページ--*/
@@ -344,3 +338,26 @@ footer small {
   height: 350px;
 }
 
+/*-----------------------*/
+/*--フォローページ(_follow_user)--*/
+/*-----------------------*/
+.user-list {
+  display: grid;
+  grid-template: auto/ 33% 33% 33%;
+}
+
+.follow_user {
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+.user-review-books {
+  display: grid;
+  grid-template: auto/ 33% 33% 33%;
+}
+
+.user-review-book {
+  margin: 0 0 20px 20px;
+  box-sizing: border-box;
+  border: 1px solid #dcdcdc;
+}
