@@ -2,8 +2,10 @@
 
 class UsersController < ApplicationController
   before_action :require_login, only: %i[update edit destroy]
+  before_action :set_user, only: %i[show edit update]
 
   def show
+    @reviews = @user.reviews
   end
 
   def new
@@ -26,11 +28,26 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update(profile_params)
+      flash[:success] = 'プロフィールを変更しました。'
+      redirect_to @user
+    else
+      flash.now[:danger] = 'プロフィーが変更できませんでした。'
+      render :edit
+    end
   end
 
   private
 
+  def set_user
+    @user = User.find(params[:id])
+  end
+
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def profile_params
+    params.require(:user).permit(:name, :gender, :user_image, :birthday, :introduction)
   end
 end

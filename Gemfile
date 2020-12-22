@@ -58,3 +58,15 @@ gem 'kaminari'
 
 #メッセージの日本語化
 gem 'rails-i18n'
+
+#楽天apiの取得
+gem 'rakuten_web_service'
+
+#画像投稿
+gem 'carrierwave'
+
+#確認ダイアログ
+gem 'data-confirm-modal'
+gem 'jquery-rails'
+gem 'bootstrap-sass'
+gem "font-awesome-rails"
