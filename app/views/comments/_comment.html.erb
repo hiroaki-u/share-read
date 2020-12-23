@@ -1,0 +1,30 @@
+<p class="txt-m mt-5"><i class="fas fa-edit"></i> コメントを投稿する</p>
+<%= form_with(model:[@review.book, @review, @comment], local:true) do |f|%>
+  <%= f.text_area :content, class:"form-control mb-2", rows: 3 %>
+  <%= f.hidden_field :review_id, value: @review.id %>
+  <%= f.submit 'コメントする', class: 'btn btn-primary' %>
+<% end %>
+
+<p class="txt-m mt-5"><i class="fas fa-comments"></i> コメント一覧</p>
+<% @comments.each do |comment| %>
+  <div class="review-bg mb-3">
+    <div class="comment-user">
+      <!-- ユーザーの画像 -->
+      <div>
+        <% if comment.user.user_image? %>
+          <a href="<%= user_url(comment.user.id) %>"><%= image_tag comment.user.user_image.url, class: "user-image" %></a>
+        <% else %>
+          <a href="<%= user_url(comment.user.id) %>"><%= image_tag "user_default", class: "user-image" %></a>
+        <% end %>      
+      </div>
+      <!-- ユーザー名 -->
+      <div class="comment-user-name">
+        <%= link_to comment.user.name, user_path(comment.user), class: "txt-s" %>
+      </div>
+    </div>
+    <!-- コメント -->
+    <div class="comment">
+      <p><%= simple_format(comment.content) %></p>      
+    </div>
+  </div>
+<% end %>
