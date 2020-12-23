@@ -1,7 +1,7 @@
-<div class="book_review_box">
-  <div class="review-content row">
-    <div class="review-content-detail col-10">
-      <div class="review-content-user">
+<div class="review-detail mb-5 mt-5">
+  <div class="review-detail-content row">
+    <div class="col-10">
+      <div class="review-detail-user">
         <div classs="mr-2"> 
           <% if @review.user.user_image? %>
             <%= link_to (image_tag @review.user.user_image.url, class: "user-image"), user_url(@review.user) %>
@@ -21,9 +21,18 @@
       <%= link_to (image_tag @review.book.image_url, class: "book-image"), book_url(@review.book) %>
     </div>
   </div>
-  <div class="reactions">
-    <a>いいね</a>
-    <a>コメント</a>
+  <div class="review-sub mt-2">
+    <div class="reactions">
+      <p class="inline-block"><%= render "favorites/favorite_button", review: @review %></p>
+      <p class="inline-block">コメント</p>
+    </div>
+    <div class="edit-delete">
+      <% if current_user == @review.user %>
+        <%= link_to edit_book_review_path(@review.book, @review), class: 'btn btn-info' do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+      <% end %>  
+    </div>
   </div>
 </div>
-<%= render "comments/comment"%>
+<%= render "comments/comment" %>

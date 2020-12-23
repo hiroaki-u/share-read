@@ -14,9 +14,19 @@ class CommentsController < ApplicationController
   end
 
   def update
+    @review = @comment.review
+    if @comment.update(comment_params)
+      redirect_to book_review_path(@review.book, @review)
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:alert] = "コメントを(140文字以内で)入力してください"
+    end
   end
 
   def edit
+    @review = Review.find(params[:review_id])
+    @comments = @review.comments.order(id: :desc)
+    render "reviews/show"
   end
 
   def destroy
