@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-6">
+    <% @comments.each do |comment| %>
+      <div class="review-bg mb-3">
+        <div class="flex-between">
+          <div class="comment-user">
+            <!-- ユーザーの画像 -->
+            <div>
+              <% if comment.user.user_image? %>
+                <a href="<%= user_url(comment.user.id) %>"><%= image_tag comment.user.user_image.url, class: "user-image" %></a>
+              <% else %>
+                <a href="<%= user_url(comment.user.id) %>"><%= image_tag "user_default", class: "user-image" %></a>
+              <% end %>      
+            </div>
+            <!-- ユーザー名 -->
+            <div class="comment-user-name">
+              <%= link_to comment.user.name, user_path(comment.user), class: "txt-s" %>
+            </div>
+          </div>
+          <div class="edit-delete">
+            <% if current_user == comment.user %>
+              <%= link_to edit_book_review_comment_path(comment.review.book, comment.review, comment), class: 'btn btn-info' do %>
+                <i class="far fa-edit"></i>
+              <% end %>
+              <%= link_to [comment.review.book, comment.review, comment], method: :delete, data: { confirm: "削除しますか？", cancel: "やめる", commit: "削除する"}, title: "削除確認", class: 'btn btn-danger' do  %>
+                <i class="fas fa-trash"></i>
+              <% end %>
+            <% end %>  
+          </div>
+        </div>
+        <!-- コメント -->
+        <div class="comment">
+          <p><%= simple_format(comment.content) %></p>      
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <%= form_with(model:[@review.book, @review, @comment], local:true) do |f|%>
+      <%= f.text_area :content, class:"form-control mb-2", rows: 3 %>
+      <%= f.hidden_field :review_id, value: @review.id %>
+      <%= f.submit 'コメントする', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

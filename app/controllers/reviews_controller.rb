@@ -7,6 +7,8 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @comments = @review.comments.order(id: :desc)
+    @comment = Comment.new
   end
 
   def new

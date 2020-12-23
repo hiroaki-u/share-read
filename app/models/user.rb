@@ -9,15 +9,16 @@ class User < ApplicationRecord
   mount_uploader :user_image, UserImageUploader
 
   has_many :reviews
+  has_many :comments
 
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
+
   has_many :reverses_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverses_relationship, source: :user
-  
-    # お気に入り機能のためのFavoriteテーブルとの関係
-    has_many :favorites
-    has_many :favorings, through: :favorites, source: :review
+
+  has_many :favorites
+  has_many :favorings, through: :favorites, source: :review
 
   def follow(other_user)
     relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user

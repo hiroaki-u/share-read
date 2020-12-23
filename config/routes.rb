@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'favorites/create'
-  get 'favorites/destroy'
   root to: 'toppages#index'
 
   get "signup", to: "users#new"
@@ -23,7 +21,9 @@ Rails.application.routes.draw do
 
   get 'books/search', to: "books#search"
   resources :books, only: %i[show] do 
-    resources :reviews, except: %i[index]
+    resources :reviews, except: %i[index] do 
+      resources :comments, only: %i[create update edit destroy]
+    end
     collection do
       get "reviews", to: "reviews#index"
     end
