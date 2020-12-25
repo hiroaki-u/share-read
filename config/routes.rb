@@ -13,10 +13,11 @@ Rails.application.routes.draw do
       get :followings
       get :followers
       get :favorites
+      get :bookcases
     end
   end
-  resources :favorites, only: %i[create, destroy]
-  resources :relationships, only: %i[create, destroy]
+  resources :favorites, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   resources :bookcases, only: %i[create destroy]
 
   get 'books/search', to: "books#search"

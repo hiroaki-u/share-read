@@ -2,13 +2,4 @@
   <p class="txt-l mb-1">『<%= @title %>』の検索結果</p>
   <p class="headline-bar"></p>
 </div>
-<div class="search-books">
-  <% if @books %>
-    <% @books.each do |book| %>
-      <div class="search-book">
-        <%= link_to image_tag(book.image_url, class:"book-image"), book_path(book.isbn) %>
-        <p><%= book.title %></p>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+<%= render "partial/book_list", books: @books %>

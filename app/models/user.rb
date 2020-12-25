@@ -49,16 +49,16 @@ class User < ApplicationRecord
     favorings.include?(other_review)
   end
 
-  def register(book)
-    bookcases.find_or_create_by(book_id: book.isbn)
+  def register(other_book)
+    bookcases.find_or_create_by(book_id: other_book.isbn)
   end
 
-  def unregister(book)
-    bookcase = bookcases.find_by(book_id: book.isbn)
+  def unregister(other_book)
+    bookcase = bookcases.find_by(book_id: other_book.isbn)
     bookcase&.destroy
   end
 
-  def register?(book)
-    register_books.include?(book)
+  def register?(other_book)
+    register_books.include?(other_book)
   end
 end

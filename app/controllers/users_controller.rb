@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   before_action :require_login, only: %i[update edit destroy followings followers favorites]
-  before_action :set_user, only: %i[show edit update followings followers favorites self_user]
+  before_action :set_user, only: %i[show edit update followings followers favorites self_user bookcases]
   before_action :self_user, only: %i[edit update]
 
   def show
@@ -48,6 +48,10 @@ class UsersController < ApplicationController
 
   def favorites
     @favorites = @user.favorings.order(updated_at: :desc).page(params[:page]).per(6)
+  end
+
+  def bookcases
+    @bookcases = @user.register_books.order(updated_at: :desc).page(params[:page]).per(18)
   end
 
   private

@@ -1,0 +1,10 @@
+<div class="books_list">
+  <% if books %>
+    <% books.each do |book| %>
+      <div class="partial_book">
+        <%= link_to image_tag(book.image_url, class:"book-image"), book_path(book.isbn) %>
+        <p><%= book.title %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
