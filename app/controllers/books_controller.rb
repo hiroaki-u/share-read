@@ -2,6 +2,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find_by(isbn: params[:id])
+    @bookcase = Bookcase.new
   end
   
   def search

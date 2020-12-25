@@ -15,9 +15,9 @@ Rails.application.routes.draw do
       get :favorites
     end
   end
-  resources :favorites, only: [:create, :destroy]
-  resources :relationships, only: [:create, :destroy]
-  
+  resources :favorites, only: %i[create, destroy]
+  resources :relationships, only: %i[create, destroy]
+  resources :bookcases, only: %i[create destroy]
 
   get 'books/search', to: "books#search"
   resources :books, only: %i[show] do 
@@ -28,4 +28,5 @@ Rails.application.routes.draw do
       get "reviews", to: "reviews#index"
     end
   end
+  
 end

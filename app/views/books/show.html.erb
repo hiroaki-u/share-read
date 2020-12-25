@@ -9,7 +9,7 @@
     </div>
     <div>
       <%= link_to "レビューを書く", new_book_review_path(@book) %>
-      <a>あとで読む</a>
+      <%= render "bookcases/register_button" %>
       <%= link_to "楽天購入ページへ", @book.url %>
     </div>
   </div>
