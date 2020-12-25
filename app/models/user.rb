@@ -20,6 +20,9 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorings, through: :favorites, source: :review
 
+  has_many :bookcases
+  has_many :register_books, through: :bookcases, source: :book
+
   def follow(other_user)
     relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user
   end
@@ -44,5 +47,18 @@ class User < ApplicationRecord
 
   def favoring?(other_review)
     favorings.include?(other_review)
+  end
+
+  def register(other_book)
+    bookcases.find_or_create_by(book_id: other_book.isbn)
+  end
+
+  def unregister(other_book)
+    bookcase = bookcases.find_by(book_id: other_book.isbn)
+    bookcase&.destroy
+  end
+
+  def register?(other_book)
+    register_books.include?(other_book)
   end
 end

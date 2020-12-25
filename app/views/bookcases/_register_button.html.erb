@@ -1,0 +1,11 @@
+<% if current_user.register?(@book) %>
+  <%= form_with(model: current_user.bookcases.find_by(book_id: @book.isbn), local: true, method: :delete) do |f| %>
+    <%= hidden_field_tag :book_id, @book.isbn %>
+    <%= f.submit "本棚から取り出す", class: "txt-xs btn btn-primary mr-3 mb-2" %>
+  <% end %>
+<% else %>
+  <%= form_with(model: current_user.bookcases.build, local: true) do |f| %>
+    <%= hidden_field_tag :book_id, @book.isbn %>
+    <%= f.submit "本棚に登録", class: "txt-xs btn btn-link mr-3 mb-2" %>
+  <% end %>
+<% end %>

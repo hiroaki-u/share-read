@@ -11,8 +11,5 @@
     <% end %>
   <% end %>
 <% else %>
-  <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
-    <%= hidden_field_tag :review_id, review.id %>
-    <%= f.submit "good (#{review.favored.count})", class: "txt-xs btn btn-link mr-3 mb-2" %>
-  <% end %>
+  <p class="txt-xs btn btn-link mr-3 mb-2">good<%= review.favored.count %></p>
 <% end %>
