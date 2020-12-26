@@ -1,4 +1,8 @@
 class Review < ApplicationRecord
+  validates :content, presence: true, length: { maximum: 1000 }
+  enum status: { "draft": 0, "published": 1, "deleted": 2 }
+  validates :status, inclusion: { in: Review.statuses.keys }
+
   belongs_to :user
   belongs_to :book ,primary_key: "isbn"
 
@@ -44,6 +48,9 @@ class Review < ApplicationRecord
     end
     
     notification.save if notification.valid?
+  end
 
+  def toggle_status!
+    draft? ? published : draft
   end
 end

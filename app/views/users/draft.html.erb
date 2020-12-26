@@ -1,0 +1,10 @@
+<div class="headline mb-5 mt-5">
+  <p class="txt-l mb-1"> 下書き一覧</p>
+  <p class="headline-bar"></p>
+</div>
+<div class="book_review_boxs">
+  <% @draft_reviews.each do |review| %>
+    <%= render "partial/book_review", review: review %>
+  <% end %>
+  <%= paginate @draft_reviews %>
+</div>

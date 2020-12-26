@@ -1,7 +1,7 @@
 class CreateBookcases < ActiveRecord::Migration[6.0]
   def change
     create_table :bookcases do |t|
-      t.integer :read
+      t.integer :read, default: 0, null:false
       t.references :book, null: false
       t.references :user, null: false, foreign_key: true
 
