@@ -2,19 +2,16 @@
 <% notifications.each do |notification| %>
   <% visitor = notification.visitor %>
   <% visited = notification.visited %>
-  <div class="col-md-6">
-    <div class="form-inline">
-      <%= link_to user_path(visitor) do %>
-        <% if notification.visitor.user_image? %>
-          <%= image_tag(visitor.user_image.url, class: "user-image") %>
-        <% else %>
-          <%= image_tag("user_default.png", class: "user-image") %>
-        <% end %>
-        <strong>
-          <p><%= visitor.name %>さんが</p>
-        </strong>
+  <div class="d-flex col-12">
+    <%= link_to user_path(visitor) do %>
+      <% if notification.visitor.user_image? %>
+        <%= image_tag(visitor.user_image.url, class: "user-image") %>
+      <% else %>
+        <%= image_tag("user_default.png", class: "user-image") %>
       <% end %>
-      <% case notification.action %>
+    <% end %>
+    <strong><%= link_to "#{visitor.name}さん", user_path(visitor) %></strong><span>が</span>
+    <% case notification.action %>
       <% when "follow" then %>
         <p>あなたをフォローしました</p>
       <% when "favorite" then %>
@@ -23,7 +20,7 @@
         <% if notification.review.user_id == visited.id %>
           <p><%= link_to "あなたの投稿", book_review_path(notification.review.book,notification.review) %>にコメントしました</p>
         <% end %>
-      <% end %>
-    </div>
+    <% end %>
+    <small class="text-muted"><%= time_ago_in_words(notification.created_at).upcase %>前</small>
   </div>
 <% end %>
