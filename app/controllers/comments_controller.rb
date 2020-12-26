@@ -5,10 +5,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build(comment_params)
+    @review = @comment.review
     if @comment.save
+      @review.create_notification_comment(current_user, @comment.id)
       redirect_back(fallback_location: root_path)
     else
-      redirect_back(fallback_location: root_path)
+      render "post/show"
       flash[:alert] = "コメントを(140文字以内で)入力してください"
     end
   end
