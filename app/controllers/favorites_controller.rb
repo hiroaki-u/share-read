@@ -4,6 +4,7 @@ class FavoritesController < ApplicationController
 
   def create
     current_user.favor(@review)
+    @review.create_notification_favorite(current_user)
     redirect_back(fallback_location: root_path)
   end
 

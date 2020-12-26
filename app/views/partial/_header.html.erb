@@ -9,7 +9,7 @@
       <ul class="navbar-nav">
       <% if logged_in? %>
         <li class="nav-item"><%= link_to "全てのレビュー", reviews_books_url, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "通知", root_url, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "通知", notifications_url, class: "nav-link" %></li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
           <ul class="dropdown-menu dropdown-menu-right">

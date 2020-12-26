@@ -16,8 +16,8 @@ Rails.application.routes.draw do
       get :bookcases
     end
   end
-  resources :favorites, only: [:create, :destroy]
-  resources :relationships, only: [:create, :destroy]
+  resources :favorites, only: %i[create destroy]
+  resources :relationships, only: %i[create destroy]
   resources :bookcases, only: %i[create destroy]
 
   get 'books/search', to: "books#search"
@@ -30,4 +30,6 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :notifications, only: %i[index]
+
 end

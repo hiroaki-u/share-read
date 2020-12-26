@@ -1,0 +1,29 @@
+<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+<% notifications.each do |notification| %>
+  <% visitor = notification.visitor %>
+  <% visited = notification.visited %>
+  <div class="col-md-6">
+    <div class="form-inline">
+      <%= link_to user_path(visitor) do %>
+        <% if notification.visitor.user_image? %>
+          <%= image_tag(visitor.user_image.url, class: "user-image") %>
+        <% else %>
+          <%= image_tag("user_default.png", class: "user-image") %>
+        <% end %>
+        <strong>
+          <p><%= visitor.name %>さんが</p>
+        </strong>
+      <% end %>
+      <% case notification.action %>
+      <% when "follow" then %>
+        <p>あなたをフォローしました</p>
+      <% when "favorite" then %>
+        <p><%= link_to "あなたの投稿", book_review_path(notification.review.book,notification.review) %>をお気に入りに登録しました</p>
+      <% when "comment" then %>
+        <% if notification.review.user_id == visited.id %>
+          <p><%= link_to "あなたの投稿", book_review_path(notification.review.book,notification.review) %>にコメントしました</p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

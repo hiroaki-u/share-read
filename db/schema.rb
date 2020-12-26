@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_24_140712) do
+ActiveRecord::Schema.define(version: 2020_12_25_105949) do
 
   create_table "bookcases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "read"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 2020_12_24_140712) do
     t.index ["review_id"], name: "index_favorites_on_review_id"
     t.index ["user_id", "review_id"], name: "index_favorites_on_user_id_and_review_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "visitor_id"
+    t.bigint "visited_id"
+    t.bigint "review_id"
+    t.bigint "comment_id"
+    t.string "action"
+    t.boolean "checked"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

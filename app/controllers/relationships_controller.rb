@@ -1,15 +1,20 @@
 class RelationshipsController < ApplicationController
   before_action :require_login
+  before_action :set_user
 
   def create
-    user = User.find(params[:follow_id])
-    current_user.follow(user)
-    redirect_to user
+    current_user.follow(@user)
+    @user.create_notification_follow(current_user)
+    redirect_to @user
   end
 
   def destroy
-    user = User.find(params[:follow_id])
-    current_user.unfollow(user)
-    redirect_to user   
+    current_user.unfollow(@user)
+    redirect_to @user   
   end
 end
+
+  private
+  def set_user
+    @user = User.find(params[:follow_id])
+  end
