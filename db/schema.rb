@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_25_105949) do
+ActiveRecord::Schema.define(version: 2020_12_26_102230) do
 
   create_table "bookcases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "read"
+    t.integer "read", default: 0, null: false
     t.bigint "book_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2020_12_25_105949) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "book_id", null: false
+    t.integer "status", default: 0, null: false
     t.index ["book_id"], name: "index_reviews_on_book_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end

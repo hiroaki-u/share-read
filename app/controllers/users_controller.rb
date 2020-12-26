@@ -2,11 +2,11 @@
 
 class UsersController < ApplicationController
   before_action :require_login, only: %i[update edit destroy followings followers favorites]
-  before_action :set_user, only: %i[show edit update followings followers favorites self_user bookcases]
+  before_action :set_user, only: %i[show edit update followings followers favorites self_user bookcases draft]
   before_action :self_user, only: %i[edit update]
 
   def show
-    @reviews = @user.reviews
+    @reviews = @user.reviews.where(status: 1)
   end
 
   def new
@@ -52,6 +52,10 @@ class UsersController < ApplicationController
 
   def bookcases
     @bookcases = @user.register_books.order(updated_at: :desc).page(params[:page]).per(18)
+  end
+
+  def draft
+    @draft_reviews = @user.reviews.where(status: 0).page(params[:page]).per(10)
   end
 
   private

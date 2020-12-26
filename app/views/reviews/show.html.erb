@@ -31,8 +31,15 @@
         <%= link_to edit_book_review_path(@review.book, @review), class: 'btn btn-info' do %>
           <i class="far fa-edit"></i>
         <% end %>
-      <% end %>  
+        <% if @review.published? %>
+          <i class="fas fa-eye"></i>
+        <% else %>
+          <i class="fas fa-eye-slash"></i>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
-<%= render "comments/comment" %>
+<% if @review.published? %>
+　<%= render "comments/comment" %>
+<% end %>

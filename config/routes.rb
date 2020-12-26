@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get :followers
       get :favorites
       get :bookcases
+      get :draft
     end
   end
   resources :favorites, only: %i[create destroy]
