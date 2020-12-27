@@ -5,12 +5,10 @@ class RelationshipsController < ApplicationController
   def create
     current_user.follow(@user)
     @user.create_notification_follow(current_user)
-    redirect_to @user
   end
 
   def destroy
-    current_user.unfollow(@user)
-    redirect_to @user   
+    current_user.unfollow(@user)  
   end
 end
 
