@@ -1,0 +1,67 @@
+/*-----------------------*/
+/*--フラッシュメッセージ--*/
+/*-----------------------*/
+.f-message {
+  position: fixed;
+  top: 57px;
+  right: 5px;
+  z-index: 9;
+  border: 1px solid #dcdcdc;
+}
+
+/*-----------------------*/
+/*--レヴュー内容(_book_review)--*/
+/*-----------------------*/
+.book_review_boxs {
+  display: grid;
+  grid-template: auto/ 50% 50% ;
+}
+
+.book_review_box {
+  margin: 0 0 20px 20px;
+  padding: 15px;
+  box-sizing: border-box;
+  border: 1px solid #dcdcdc;
+}
+
+.review-content:hover {
+  opacity: 0.6;
+}
+
+.review-content {
+  margin: 0;
+  border-bottom: 1px solid #e7e6e6;
+}
+
+.review-content-detail {
+  padding: 0;
+}
+
+.review-content-user {
+  display: flex;
+}
+
+.review-sub {
+  display: flex;
+  justify-content: space-between;
+}
+.reactions {
+  display: flex;
+}
+
+.edit-delete {
+  right: 15px;
+}
+
+/*-----------------------*/
+/*--本の一覧表示ページ(_book_partial)--*/
+/*-----------------------*/
+.books_list {
+  display: grid;
+  grid-template: auto/ 20% 20% 20% 20% 20%;
+}
+
+.partial_book {
+  width: 80%;
+  height: 350px;
+}

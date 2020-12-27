@@ -1,0 +1,49 @@
+
+/*-----------------------*/
+/*--ヘッダー--*/
+/*-----------------------*/
+/*ナビバー*/
+header {
+  margin-bottom: 60px;
+}
+
+.navbar {
+  box-shadow:0 2px 10px #999;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/*通知画面*/
+.bell-shape {
+  position: absolute;
+  top: 10px;
+  color: #87ceeb;
+  rotate: 45deg;
+  transform: rotate(15deg);
+}
+
+
+/*-----------------------*/
+/*--検索バー-*/
+/*-----------------------*/
+.search_bar {
+  background-color: #eeeeee;
+  padding: 20px 0;
+  box-sizing:border-box;
+} 
+
+/*-----------------------*/
+/*--フッター--*/
+/*-----------------------*/
+footer {
+  background-color: #fff;
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
+}
+
+footer small {
+  color: gray
+}

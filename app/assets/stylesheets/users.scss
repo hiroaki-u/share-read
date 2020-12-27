@@ -1,0 +1,57 @@
+/*-----------------------*/
+/*--ユーザーのプロフィールページ(users/show)--*/
+/*-----------------------*/
+.profile-detail {
+  display: flex;
+}
+
+.user-page-bar {
+  border-top:1px solid #dcdcdc;
+  border-bottom:1px solid #dcdcdc;
+}
+
+.user-page-bar ul {
+  width: 100%;
+}
+
+.user-page-bar ul li {
+  width:20%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.user-page-bar ul li a {
+  padding: 20px 0;
+}
+
+.user-page-bar ul li a:hover {
+  background-color: #bbddeb;
+}
+
+.page-active {
+  background-color: #99CCE0;
+}
+
+/*-----------------------*/
+/*--フォローページ(_follow_user)(followings, followers)--*/
+/*-----------------------*/
+.user-list {
+  display: grid;
+  grid-template: auto/ 33% 33% 33%;
+}
+
+.follow_user {
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+.user-review-books {
+  display: grid;
+  grid-template: auto/ 33% 33% 33%;
+}
+
+.user-review-book {
+  margin: 0 0 20px 20px;
+  box-sizing: border-box;
+  border: 1px solid #dcdcdc;
+}
