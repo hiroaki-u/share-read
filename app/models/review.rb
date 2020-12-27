@@ -1,12 +1,13 @@
 class Review < ApplicationRecord
-  validates :content, presence: true, length: { maximum: 1000 }
-  enum status: { "draft": 0, "published": 1, "deleted": 2 }
+  validates :content, presence: true, length: { maximum: 1200 }
+  enum status: { "draft": 0, "published": 1 }
   validates :status, inclusion: { in: Review.statuses.keys }
 
   belongs_to :user
   belongs_to :book ,primary_key: "isbn"
 
   has_many :comments, dependent: :destroy
+  
   has_many :favorites, dependent: :destroy
   has_many :favored, through: :favorites, source: :user
 

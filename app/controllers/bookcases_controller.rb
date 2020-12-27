@@ -3,11 +3,7 @@ class BookcasesController < ApplicationController
   before_action :set_book
 
   def create
-    if current_user.register(@book)
-      flash[:success] = "登録完了"
-    else
-      flash[:success] = "失敗です"
-    end
+    current_user.register(@book)
   end
 
   def destroy
