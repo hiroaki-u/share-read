@@ -4,17 +4,14 @@ class BookcasesController < ApplicationController
 
   def create
     if current_user.register(@book)
-      redirect_back(fallback_location: root_path)
       flash[:success] = "登録完了"
     else
-      redirect_back(fallback_location: root_path)
       flash[:success] = "失敗です"
     end
   end
 
   def destroy
     current_user.unregister(@book)
-    redirect_back(fallback_location: root_path)
   end
 
   private
