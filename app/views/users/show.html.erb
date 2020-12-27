@@ -11,7 +11,7 @@
       <p class="txt-m"><%= @user.name %></p>
       <p>年齢：<%= user_age %> 歳</p>
       <p>性別：<%= @user.gender %></p>
-      <p><%= render "relationships/follow_button", user: @user %></p>
+      <div id="follow_buttons_<%= @user.id %>"><%= render "relationships/follow_button", user: @user %></div>
     </div>
   </div>
   <div class="introduction col-7">

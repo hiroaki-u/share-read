@@ -1,11 +1,11 @@
 <% if logged_in? %>
   <% if current_user.favoring?(review) %>
-    <%= form_with(model: current_user.favorites.find_by(review_id: review.id), local: true, method: :delete) do |f| %>
+    <%= form_with(model: current_user.favorites.find_by(review_id: review.id), method: :delete) do |f| %>
       <%= hidden_field_tag :review_id, review.id %>
       <%= f.submit "good (#{review.favored.count})", class: "txt-xs btn btn-primary mr-3 mb-2" %>
     <% end %>
   <% else %>
-    <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
+    <%= form_with(model: current_user.favorites.build) do |f| %>
       <%= hidden_field_tag :review_id, review.id %>
       <%= f.submit "good (#{review.favored.count})", class: "txt-xs btn btn-link mr-3 mb-2" %>
     <% end %>

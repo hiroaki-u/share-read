@@ -3,14 +3,13 @@ class FavoritesController < ApplicationController
   before_action :set_review
 
   def create
+    review = @review
     current_user.favor(@review)
     @review.create_notification_favorite(current_user)
-    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     current_user.unfavor(@review)
-    redirect_back(fallback_location: root_path)
   end
 
   private
