@@ -23,8 +23,8 @@
   </div>
   <div class="review-sub mt-2">
     <div class="reactions">
-      <p class="inline-block"><%= render "favorites/favorite_button", review: @review %></p>
-      <p class="inline-block">コメント</p>
+      <div class="favorite_buttons_<%= @review.id %>"><%= render "favorites/favorite_button", review: @review %></div>
+      <p>コメント(<%= @review.comments.count %>)</p>
     </div>
     <div class="edit-delete">
       <% if current_user == @review.user %>
