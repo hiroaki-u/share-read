@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :require_login, only: %i[show]
 
   def show
     @book = Book.find_by(isbn: params[:id])

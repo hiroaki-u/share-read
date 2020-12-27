@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[update edit destroy comment_correct_user]
   before_action :set_review
   before_action :set_comments, only: %i[create edit destroy]
-  before_action :comment_correct_user, only: %i[edit update destory]
+  before_action :comment_correct_user, only: %i[update edit destory]
 
   def create
     @comment = current_user.comments.build(comment_params)
@@ -50,8 +50,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_correct_user
-    unless @comment.user_id == current_user.id
-      redirect_to root_url
-    end
+    redirect_to root_url unless @comment.user_id == current_user.id
   end
 end

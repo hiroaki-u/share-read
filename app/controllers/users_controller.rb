@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :require_login, only: %i[update edit destroy followings followers favorites]
-  before_action :set_user, only: %i[show edit update followings followers favorites self_user bookcases draft]
-  before_action :self_user, only: %i[edit update]
+  before_action :require_login, only: %i[edit update followings followers favorites bookcases draft]
+  before_action :set_user, only: %i[show edit update followings followers favorites bookcases draft self_user]
+  before_action :self_user, only: %i[edit update draft]
 
   def show
     @reviews = @user.reviews.where(status: 1)
