@@ -1,41 +1,53 @@
 <header>
   <nav class="navbar navbar-expand-sm navbar-light">
-    <a class="navbar-brand" href="/">Share-read</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-      <% if logged_in? %>
-        <li class="nav-item"><%= link_to "全てのレビュー", reviews_books_url, class: "nav-link" %></li>
-        <li class="nav-item">
-          <%= link_to notifications_url, class: "nav-link" do %>
-            <% if unchecked_notifications.any? %>
-                通知<i class="fas fa-bell bell-shape"></i>
-            <% else %>
-                通知
+    <div class="container flex">
+      <div class="navbar-left flex">
+        <%= link_to (image_tag "top_logo", class: "top_logo mr-2"), root_path %>
+        <%= link_to "Share-read", root_path, class: "mr-2 site-title" %>
+        
+          <%= form_tag(books_search_path, method: :get, class: 'flex search-form') do %>
+            <%= text_field_tag :title, @title, class: 'form-control search-bar', placeholder: '本のタイトル' %>
+            <%= button_tag type: "submit",class: "btn submit-btn" do %>
+              <i class="fas fa-search"></i>
             <% end %>
           <% end %>
-        </li>
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li class="dropdown-item"><%= link_to "マイページ", user_url(current_user) %></li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-item"><%= link_to "下書き一覧", draft_user_url(current_user) %></li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-item"><%= link_to "アカウント設定", edit_user_url(current_user) %></li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-item"><%= link_to "ログアウト", logout_path, method: :delete %></li>
-          </ul>
-        </li>
-      <% else %>
-          <li class="nav-item"><%= link_to "新規登録", signup_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "ログイン", login_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "ゲストログイン", guest_login_path, method: :post, class: "nav-link" %></li>
-      <% end %>
-      </ul>
+        
+      </div>
+      <div class="navbar-right">
+        
+        <ul class="flex navbar-right-items">
+          <% if logged_in? %>
+            <li class="nav-item">
+              <%= link_to notifications_url, class: "nav-link" do %>
+                <% if unchecked_notifications.any? %>
+                    <i class="fas fa-bell"></i><i class="fas fa-bell bell-shape"></i>
+                <% else %>
+                    <i class="fas fa-bell"></i>
+                <% end %>
+              <% end %>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user"></i></a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li class="dropdown-item"><%= link_to current_user.name, user_url(current_user) %></li>
+                <li class="dropdown-divider"></li>
+                <li class="dropdown-item"><%= link_to "下書き一覧", draft_user_url(current_user) %></li>
+                <li class="dropdown-divider"></li>
+                <li class="dropdown-item"><%= link_to "アカウント設定", edit_user_url(current_user) %></li>
+                <li class="dropdown-divider"></li>
+                <li class="dropdown-item"><%= link_to "ログアウト", logout_path, method: :delete %></li>
+              </ul>
+            </li>
+          <% else %>
+              <li class="nav-item"><%= link_to "新規登録", signup_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "ログイン", login_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "ゲストログイン", guest_login_path, method: :post, class: "nav-link" %></li>
+          <% end %>
+        </ul>
+        
+      </div>
     </div>
   </nav>
+  
+
 </header>
