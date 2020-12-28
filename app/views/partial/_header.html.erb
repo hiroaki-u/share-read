@@ -3,18 +3,15 @@
     <div class="container flex">
       <div class="navbar-left flex">
         <%= link_to (image_tag "top_logo", class: "top_logo mr-2"), root_path %>
-        <%= link_to "Share-read", root_path, class: "mr-2 site-title" %>
-        
-          <%= form_tag(books_search_path, method: :get, class: 'flex search-form') do %>
-            <%= text_field_tag :title, @title, class: 'form-control search-bar', placeholder: '本のタイトル' %>
-            <%= button_tag type: "submit",class: "btn submit-btn" do %>
-              <i class="fas fa-search"></i>
-            <% end %>
+        <%= link_to "Share-read", root_path, class: "mr-4 site-title sm-none" %>
+        <%= form_tag(books_search_path, method: :get, class: 'flex search-form') do %>
+          <%= text_field_tag :title, @title, class: 'form-control search-bar', placeholder: '本のタイトル' %>
+          <%= button_tag type: "submit",class: "btn search-btn" do %>
+            <i class="fas fa-search"></i>
           <% end %>
-        
+        <% end %>
       </div>
       <div class="navbar-right">
-        
         <ul class="flex navbar-right-items">
           <% if logged_in? %>
             <li class="nav-item">
@@ -22,12 +19,12 @@
                 <% if unchecked_notifications.any? %>
                     <i class="fas fa-bell"></i><i class="fas fa-bell bell-shape"></i>
                 <% else %>
-                    <i class="fas fa-bell"></i>
+                    <i class="fas fa-bell fa-lg"></i>
                 <% end %>
               <% end %>
             </li>
             <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user"></i></a>
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user fa-lg"></i></a>
               <ul class="dropdown-menu dropdown-menu-right">
                 <li class="dropdown-item"><%= link_to current_user.name, user_url(current_user) %></li>
                 <li class="dropdown-divider"></li>
@@ -39,15 +36,20 @@
               </ul>
             </li>
           <% else %>
-              <li class="nav-item"><%= link_to "新規登録", signup_path, class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to "ログイン", login_path, class: "nav-link" %></li>
-              <li class="nav-item"><%= link_to "ゲストログイン", guest_login_path, method: :post, class: "nav-link" %></li>
+              <li class="nav-item">
+                <%= link_to signup_path, class: "btn nav-btn register-btn txt-xxs" do %>
+                  <i class="fas fa-user-plus"></i> <span class="sm-none">会員登録</span>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to login_path, class: "btn nav-btn login-btn txt-xxs" do %>
+                  <i class="fas fa-sign-in-alt"></i> <span class="sm-none">ログイン</span>
+                <% end %>
+              </li>
           <% end %>
         </ul>
         
       </div>
     </div>
   </nav>
-  
-
 </header>

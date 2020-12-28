@@ -31,6 +31,9 @@
         <%= link_to edit_book_review_path(@review.book, @review), class: 'btn btn-info' do %>
           <i class="far fa-edit"></i>
         <% end %>
+        <%= link_to [@review.book, @review], method: :delete, data: { confirm: "削除しますか？", cancel: "やめる", commit: "削除する"}, title: "削除確認", class: 'btn btn-danger' do  %>
+          <i class="fas fa-trash"></i>
+        <% end %>
         <% if @review.published? %>
           <i class="fas fa-eye"></i>
         <% else %>

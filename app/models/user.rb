@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{5,32}$+\z/i }
+  # validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{5,128}$+\z/i }
   has_secure_password
   enum gender: { "男性": 1, "女性": 2 }
   mount_uploader :user_image, UserImageUploader

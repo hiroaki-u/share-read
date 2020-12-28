@@ -8,7 +8,7 @@ a {
 
 /*ナビバー*/
 header {
-  margin-bottom: 75px;
+  height: 75px;
 }
 
 .site-title {
@@ -31,7 +31,7 @@ header {
   top: 11px;
 }
 
-.submit-btn {
+.search-btn {
   color: $main_color;
   position: relative;
   right: 35px;
@@ -72,6 +72,23 @@ header {
 .nav-link {
   padding: 5px 10px;
   color: #808080;
+}
+/*非ログイン時*/
+/*ボタン共通*/
+.nav-btn {
+  color: #fff;
+  padding: 7.5px 20px;
+  border-radius: 5px;
+}
+
+/*登録ボタン*/
+.register-btn {
+  background-color: #ef534b;
+}
+/*ログインボタン*/
+.login-btn {
+  background-color: #1ea0c5;
+  margin-left: 10px;
 }
 
 /*-----------------------*/
