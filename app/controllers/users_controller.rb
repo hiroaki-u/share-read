@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :self_user, only: %i[edit update draft]
 
   def show
-    @reviews = @user.reviews.where(status: 1)
+    @reviews = @user.feed_reviews.where(status: 1).order(updated_at: :desc)
   end
 
   def new

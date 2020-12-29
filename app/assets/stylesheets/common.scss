@@ -17,7 +17,6 @@ body {
 }
 .field_with_errors {
   display: contents;
-  // もしくは diplay: inline;
 }
 
 /*-----------------------*/
@@ -32,6 +31,11 @@ body {
   display: flex;
 }
 
+.subscript {
+  vertical-align: sub;
+  padding-left: 2px;
+}
+
 @media screen and (max-width: 768px) {
   .sm-none {
     display: none;
@@ -44,6 +48,10 @@ body {
   }
 }
 
+.margin-0 {
+  margin: 0;
+}
+
 /*-----------------------*/
 /*--文字--*/
 /*-----------------------*/
@@ -54,9 +62,11 @@ a:hover {
   text-decoration: none;
   color: #000;
 }
+
 .txt-xxs {
-  font-size: 12px;
+  font-size: 14px;
 }
+
 .txt-xs {
   font-size: 16px;
 }
@@ -87,22 +97,18 @@ ul {
   list-style: none;
 }
 
+.thin-font {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
 /*-----------------------*/
 /*--見出し文字--*/
 /*-----------------------*/
 
 .headline {
-  text-align: center;
-  display: inline-block;
-  font-family: "Noto Sans JP", sans-serif;
-  box-shadow: 0 -9px 0 0 $main_color inset;
-}
-
-.headline-bar {
-  display: inline-block;
-  width: 40px;
-  border-bottom: 2px solid #000000;
   margin: 0 auto;
+  display: inline-block;
+  box-shadow: 0 -6px 0 0 #3c6ea6 inset;
 }
 
 /*-----------------------*/
@@ -131,15 +137,17 @@ ul {
 }
 
 .user-image {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 10px;
   border: 1px solid #dcdcdc;
 }
 
 .book-image {
-  width: 100%;
+  width: 150px;
+  heihgt: auto;
   border: 1px solid #dcdcdc;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /*画面サイズ変更時の画像*/

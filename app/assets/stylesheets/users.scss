@@ -86,7 +86,14 @@
   width: 100%;
 }
 
-.user-page-bar ul li {
+.current-user-page-bar {
+  width: 20%;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 68px;
+}
+
+.other-user-page-bar {
   width: 25%;
   box-sizing: border-box;
   text-align: center;

@@ -4,7 +4,7 @@
 
 .topwrapper {
   background-image: url("toppage.jpg");
-  height:600px;
+  height: 600px;
   background-size: cover;
   background-position: center;
   height: 400px;
@@ -16,6 +16,24 @@
   left: 50px;
   color: #fff;
 }
+
+.all-review-btn {
+  background-color: #dcecf8;
+  display: inline-block;
+  position: absolute;
+  right: 15%;
+  border-radius: 10px;
+}
+
+.all-review-btn p {
+  padding: 10px 25px;
+  box-sizing: border-box;
+}
+
+.review-list {
+  background-color: #fff;
+}
+
 /*-----------------------*/
 /*--ログイン時--*/
 /*-----------------------*/

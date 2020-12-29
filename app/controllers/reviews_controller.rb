@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   before_action :confirm_draft, only: %i[show edit update destroy]
 
   def index
-    @reviews = Review.all.order(created_at: :desc).page(params[:page]).per(10)
+    @reviews = Review.all.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def show

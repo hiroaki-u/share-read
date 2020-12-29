@@ -1,42 +1,35 @@
-<div class="book_review_box">
-  <%= link_to book_review_url(review.book, review) do %>
-    <div class="review-content row">
-      <div class="review-content-detail col-8">
-        <div class="review-content-user">
-          <div classs="mr-2"> 
-            <% if review.user.user_image? %>
-              <%= image_tag(review.user.user_image.url, class: "user-image") %>
-            <% else %>
-              <%= image_tag("user_default.png", class: "user-image") %>
-            <% end %>
-          </div>
-          <div class="user-name">
-            <p><%= review.user.name %></p>
-            <p><%= review.updated_at %></p>
-          </div>
+<div class="book-review-box">
+  <div class="review-content">
+    <%= link_to book_review_url(review.book, review) do %>
+      <div class="flex mb-3">
+        <div> 
+          <% if review.user.user_image? %>
+            <%= image_tag(review.user.user_image.url, class: "user-image") %>
+          <% else %>
+            <%= image_tag("user_default.png", class: "user-image") %>
+          <% end %>
         </div>
-        <p><%= review.book.title %></p>
-        <p><%= simple_format(strip_tags(review.content).truncate(10)) %></p>
+        <p class="thin-font pt-2 pl-2"><%= review.user.name %></p>
       </div>
-      <div class="review-content-image col-4">
-        <%= image_tag(review.book.image_url, class: "book-image") %>
+      <div class="review-content-detail flex">
+        <div class="review-content-image">
+          <%= image_tag(review.book.image_url, class: "book-image") %>
+        </div>
+        <div class="pl-3">
+          <p class="mb-1"><%= review.book.title %></p>
+          <p class="thin-font txt-xxs txt-author"><%= review.book.author %></p>
+          <%= simple_format(strip_tags(review.content).truncate(80), class:"thin-font margin-0") %>
+          <p class="thin-font"></p>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+
   <div class="review-sub mt-2">
     <div class="reactions">
       <div class="favorite_buttons_<%= review.id %>"><%= render "favorites/favorite_button", review: review %></div>
-      <p>コメント(<%= review.comments.count %>)</p>
+      <div class="pl-3"><i class="far fa-comment fa-lg"></i><small class="subscript"><%= review.comments.count %></small></div>
     </div>
-    <div class="edit-delete">
-      <% if current_user == review.user %>
-        <%= link_to edit_book_review_path(review.book, review), class: 'btn btn-info' do %>
-          <i class="far fa-edit"></i>
-        <% end %>
-        <%= link_to [review.book, review], method: :delete, data: { confirm: "削除しますか？", cancel: "やめる", commit: "削除する"}, title: "削除確認", class: 'btn btn-danger' do  %>
-          <i class="fas fa-trash"></i>
-        <% end %>
-      <% end %>
-    </div>
+    <small class="text-muted"><%= time_ago_in_words(review.updated_at).upcase %>前</small>
   </div>
 </div>

@@ -1,17 +1,56 @@
+.txt-author {
+  color: #3c6ea6;
+}
+
 /*-----------------------*/
 /*--Reivew詳細ページ(review/show)*/
 /*-----------------------*/
-.review-detail {
+.book_review_boxs {
+  display: grid;
+  grid-template: auto/ 50% 50%;
+  background-color: #fff;
+}
+
+.book-review-box {
+  margin: 0 20px 20px 0;
   padding: 15px;
   box-sizing: border-box;
-  border: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
 }
 
-.review-detail-content {
-  margin: 0;
-  border-bottom: 1px solid #e7e6e6;
+.review-content:hover {
+  opacity: 0.6;
 }
 
-.review-detail-user {
+.review-content-detail {
+  padding: 0;
+}
+
+.review-sub {
   display: flex;
+  justify-content: space-between;
+}
+.reactions {
+  display: flex;
+}
+
+.edit-delete {
+  right: 15px;
+}
+
+/*-----------------------*/
+/*--お気に入りボタン(_favorite_button)--*/
+/*-----------------------*/
+.favorite-btn {
+  background-color: transparent;
+  border: none;
+  vertical-align: bottom;
+}
+
+.favorite-btn:focus {
+  outline: none;
+}
+
+.favorite-heart {
+  color: #ed4916;
 }

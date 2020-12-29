@@ -1,13 +1,19 @@
 <% if logged_in? %>
-  <div class="mb-5 topwrapper">
+  <div class="topwrapper">
     <div class="toppage-message">
       <p class="txt-shadow txt-xxl">読んだ本をシェアしよう！</p>
     </div>
   </div>
-  <div class="container">
-    <div class="headline mb-5">
-      <p class="txt-l mb-1"> 最近のレビュー</p>
-      <p class="headline-bar"></p>
+  <div class="container review-list">
+    <div class="text-center">
+      <div class="headline mt-5 mb-5">
+        <p class="txt-l margin-0"> 最近のレビュー</p>
+      </div>
+      <div class="all-review-btn mt-5">
+        <%= link_to reviews_books_path do %>
+          <p class="margin-0">全てのレビュー<i class="fas fa-chevron-right"></i></p>
+        <% end %>
+      </div>
     </div>
     <div class="book_review_boxs">
       <% @reviews.first(4).each do |review| %>
@@ -16,15 +22,16 @@
     </div>
   </div>
 <% else %>
-  <div class="mb-5 topwrapper">
+  <div class="topwrapper">
     <div class="toppage-message">
       <p class="txt-shadow txt-xxl">読んだ本をシェアしよう！</p>
     </div>
   </div>
-  <div class="container">
-    <div class="headline mb-5">
-      <p class="txt-l mb-1"> 最近のレビュー</p>
-      <p class="headline-bar"></p>
+  <div class="container review-list">
+    <div class="text-center">
+      <div class="headline mt-5 mb-5">
+        <p class="txt-l margin-0"> 最近のレビュー</p>
+      </div>
     </div>
     <div class="book_review_boxs">
       <% @reviews.first(4).each do |review| %>
