@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row comment-boxs">
   <div class="col-md-6 comment_area">
     <%= render "comments/comment_area" %>
   </div>
@@ -6,7 +6,7 @@
     <%= form_with(model:[@review.book, @review, @comment]) do |f|%>
       <%= f.text_area :content, class:"form-control mb-2", rows: 3 %>
       <%= f.hidden_field :review_id, value: @review.id %>
-      <%= f.submit 'コメントする', class: 'btn btn-primary' %>
+      <%= f.submit 'コメントする', class: 'submit-btn txt-xxs' %>
     <% end %>
   </div>
 </div>

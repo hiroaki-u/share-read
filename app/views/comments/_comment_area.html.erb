@@ -1,7 +1,7 @@
 <% @comments.each do |comment| %>
-  <div class="review-bg mb-3">
+  <div class="comment-box mb-3">
     <div class="flex-between">
-      <div class="comment-user">
+      <div class="comment-user flex">
         <!-- ユーザーの画像 -->
         <div>
           <% if comment.user.user_image? %>
@@ -11,24 +11,24 @@
           <% end %>      
         </div>
         <!-- ユーザー名 -->
-        <div class="comment-user-name">
-          <%= link_to comment.user.name, user_path(comment.user), class: "txt-s" %>
+        <div class="comment-user-name pl-2">
+          <%= link_to comment.user.name, user_path(comment.user), class: "txt-xs thin-font" %>
         </div>
       </div>
       <div class="edit-delete">
         <% if current_user == comment.user %>
-          <%= link_to edit_book_review_comment_path(comment.review.book, comment.review, comment), class: 'btn btn-info' do %>
-            <i class="far fa-edit"></i>
+          <%= link_to edit_book_review_comment_path(comment.review.book, comment.review, comment) do %>
+            <i class="far fa-edit fa-lg m-1"></i>
           <% end %>
-          <%= link_to [comment.review.book, comment.review, comment], method: :delete, remote: true, class: 'btn btn-danger' do  %>
-            <i class="fas fa-trash"></i>
+          <%= link_to [comment.review.book, comment.review, comment], method: :delete, remote: true do  %>
+            <i class="fas fa-trash fa-lg m-1"></i>
           <% end %>
         <% end %>  
       </div>
     </div>
     <!-- コメント -->
     <div class="comment">
-      <p><%= simple_format(comment.content) %></p>      
+      <%= simple_format(comment.content, class: "thin-font pt-2 txt-xxs") %>    
     </div>
   </div>
 <% end %>

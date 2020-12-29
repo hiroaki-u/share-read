@@ -3,7 +3,38 @@
 }
 
 /*-----------------------*/
-/*--Reivew詳細ページ(review/show)*/
+/*--Reivew詳細(review/show)*/
+/*-----------------------*/
+.review-detail-box {
+  margin: 0 20px 20px 0;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.review-detail-content {
+  width: 100%;
+}
+
+.review-detail-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.draft-icon {
+  background-color: $pale-blue;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.fa-edit {
+  color: $main_color;
+}
+
+.fa-trash {
+  color: #bbbbbb;
+}
+/*-----------------------*/
+/*--Reivewパーシャルページ(_book_review)*/
 /*-----------------------*/
 .book_review_boxs {
   display: grid;
@@ -19,7 +50,7 @@
 }
 
 .review-content:hover {
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .review-content-detail {
@@ -29,9 +60,6 @@
 .review-sub {
   display: flex;
   justify-content: space-between;
-}
-.reactions {
-  display: flex;
 }
 
 .edit-delete {
@@ -52,5 +80,16 @@
 }
 
 .favorite-heart {
-  color: #ed4916;
+  color: $light-red;
+}
+
+/*-----------------------*/
+/*--コメント--*/
+/*-----------------------*/
+.comment-boxs {
+  padding: 20px;
+}
+
+.comment-box {
+  border-bottom: 1px solid #dcdcdc;
 }

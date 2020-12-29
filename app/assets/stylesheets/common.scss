@@ -2,6 +2,9 @@
 /*--色の設定--*/
 /*-----------------------*/
 $main_color: #293c6f;
+$pale-blue: #dcecf8;
+$light-blue: #1ea0c5;
+$light-red: #ef534b;
 
 /*-----------------------*/
 /*--ページ全体--*/
@@ -50,6 +53,10 @@ body {
 
 .margin-0 {
   margin: 0;
+}
+
+.bg-gray {
+  background-color: #f9f9f9;
 }
 
 /*-----------------------*/
@@ -142,9 +149,22 @@ ul {
   border-radius: 10px;
   border: 1px solid #dcdcdc;
 }
+.user-image-l {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+}
 
 .book-image {
   width: 150px;
+  heihgt: auto;
+  border: 1px solid #dcdcdc;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.book-image-l {
+  width: 175px;
   heihgt: auto;
   border: 1px solid #dcdcdc;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);

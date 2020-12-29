@@ -1,3 +1,31 @@
-// Place all the styles related to the books controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+/*-----------------------*/
+/*--本棚ボタン--*/
+/*-----------------------*/
+.unregister-submit-btn {
+  background-color: $light-red;
+  color: #fff;
+  padding: 10.5px 56px;
+  border-radius: 5px;
+  border: none;
+}
+
+.register-submit-btn:hover,
+.unregister-submit-btn:hover {
+  opacity: 0.8;
+}
+
+.register-submit-btn {
+  background-color: #fff;
+  color: $light-red;
+  padding: 10.5px 31.5px;
+  border-radius: 5px;
+  border: 1px solid $light-red;
+}
+
+.purchase-btn {
+  background-color: #fff;
+  color: #888888;
+  padding: 10.5px 31.5px;
+  border-radius: 5px;
+  border: 1px solid #888888;
+}

@@ -1,5 +1,8 @@
-<div class="headline mb-5 mt-5">
-  <p class="txt-l mb-1">『<%= @title %>』の検索結果</p>
-  <p class="headline-bar"></p>
+<div class="container">
+  <div class="text-center">
+    <div class="headline mb-5 mt-5">
+      <p class="txt-l mb-1">『<%= @title %>』の検索結果</p>
+    </div>
+  </div>
+  <%= render "partial/book_list", books: @books %>
 </div>
-<%= render "partial/book_list", books: @books %>

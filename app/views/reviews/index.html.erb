@@ -1,11 +1,13 @@
-<div class="text-center">
-  <div class="headline mt-5 mb-5">
-    <p class="txt-l margin-0"> 全てのレビュー</p>
+<div class="container">
+  <div class="text-center">
+    <div class="headline mt-5 mb-5">
+      <p class="txt-l margin-0"> 全てのレビュー</p>
+    </div>
   </div>
-</div>
-<div class="book_review_boxs">
-  <% @reviews.each do |review| %>
-    <%= render "partial/book_review", review: review %>
-  <% end %>
-  <%= paginate @reviews %>
+  <div class="book_review_boxs">
+    <% @reviews.each do |review| %>
+      <%= render "partial/book_review", review: review %>
+    <% end %>
+    <%= paginate @reviews %>
+  </div>
 </div>

@@ -1,6 +1,4 @@
 <%= render "profile" %>
-<div class="headline mb-5 mt-5">
-  <p class="txt-l mb-1">本棚一覧</p>
-  <p class="headline-bar"></p>
+<div class="container mt-5">
+  <%= render "partial/book_list", books: @bookcases %>
 </div>
-<%= render "partial/book_list", books: @bookcases %>
