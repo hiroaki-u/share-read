@@ -1,9 +1,15 @@
 <%= render "profile" %>
-<div class="container">
-  <div class="book_review_boxs">
-    <% @reviews.each do |review| %>
-      <%= render "partial/book_review", review: review %>
-    <% end %>
+<% if @reviews.exists? %>
+  <div class="container mb-5">
+    <div class="book_review_boxs">
+      <% @reviews.each do |review| %>
+        <%= render "partial/book_review", review: review %>
+      <% end %>
+    </div>
+    <%= paginate @reviews %>
   </div>
-  <%= paginate @reviews %>
-</div>
+<% else %>
+  <div class="text-center mt-5 mb-5">
+    <p>投稿はまだありません。</p>
+  </div>
+<% end %>

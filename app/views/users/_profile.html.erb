@@ -38,7 +38,7 @@
     <% end %>
       <li class="user-page-bar-list"><%= link_to "本棚", bookcases_user_path(@user), class: " #{'page-active' if current_page?(bookcases_user_path(@user))}" %></li>
       <li class="user-page-bar-list"><%= link_to "フォロワー (#{@user.followings.count})", followings_user_path(@user), class: " #{'page-active' if current_page?(followings_user_path(@user))}" %></li>
-      <li class="user-page-bar-list"><%= link_to "フォロー (#{@user.followers.count})", followers_user_path(@user), class: " #{'page-active' if current_page?(followers_user_path(@user))}" %></li>
+      <li class="user-page-bar-list"><%= link_to "フォロー中 (#{@user.followers.count})", followers_user_path(@user), class: " #{'page-active' if current_page?(followers_user_path(@user))}" %></li>
     </ul>
   </div>
 </div>

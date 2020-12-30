@@ -1,6 +1,6 @@
 <%= render "profile" %>
 <% if @draft_reviews.exists? %>
-  <div class=container>
+  <div class="container mb-5">
     <div class="book_review_boxs">
       <% @draft_reviews.each do |review| %>
         <%= render "partial/book_review", review: review %>

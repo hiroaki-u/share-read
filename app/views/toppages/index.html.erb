@@ -1,10 +1,12 @@
 <% if logged_in? %>
   <div class="topwrapper">
-    <div class="toppage-message">
-      <p class="txt-shadow txt-xxl">読んだ本をシェアしよう！</p>
+    <p class="txt-xl topwrapper-login-message">shareして本を自分のものに</p>
+    <div class="flex topwrapper-logo">
+      <%= image_tag("top_logo", class: "top_logo-l") %>
+      <p class="site-title-l pl-3">Share-read</p>
     </div>
   </div>
-  <div class="container review-list">
+  <div class="container review-list mb-5">
     <div class="text-center">
       <div class="headline mt-5 mb-5">
         <p class="txt-l margin-0"> 最近のレビュー</p>
@@ -23,14 +25,19 @@
   </div>
 <% else %>
   <div class="topwrapper">
-    <div class="toppage-message">
-      <p class="txt-shadow txt-xxl">読んだ本をシェアしよう！</p>
+    <div class="concept-message">
+      <p class="concept-message-detail txt-m mb-2">本を読んでそのままになっていませんか？</p>
+      <p class="concept-message-detail txt-m">本の内容をshareして知識を自分のものにしましょう</p>
+    </div>
+    <div class="flex topwrapper-logo">
+      <%= image_tag("top_logo", class: "top_logo-l") %>
+      <p class="site-title-l pl-3">Share-read</p>
     </div>
   </div>
-  <div class="container review-list">
+  <div class="container review-list mb-5">
     <div class="text-center">
       <div class="headline mt-5 mb-5">
-        <p class="txt-l margin-0"> 最近のレビュー</p>
+        <p class="txt-l m-0"> 最近のレビュー</p>
       </div>
     </div>
     <div class="book_review_boxs">

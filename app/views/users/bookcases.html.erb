@@ -1,6 +1,6 @@
 <%= render "profile" %>
 <% if @bookcases.present? %>
-  <div class="container mt-5">
+  <div class="container mt-5 mb-5">
     <%= render "partial/book_list", books: @bookcases %>
     <%= paginate @bookcases %>
   </div>
