@@ -55,11 +55,11 @@ class UsersController < ApplicationController
   end
 
   def bookcases
-    @bookcases = @user.register_books.order(updated_at: :desc).page(params[:page]).per(18)
+    @bookcases = @user.register_books.order(updated_at: :desc).page(params[:page]).per(6)
   end
 
   def draft
-    @draft_reviews = @user.reviews.where(status: 0).page(params[:page]).per(10)
+    @draft_reviews = @user.reviews.where(status: 0).order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   private

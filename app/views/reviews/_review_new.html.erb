@@ -1,0 +1,25 @@
+<div class="modal js-modal">
+  <div class="modal__bg js-modal-close"></div>
+  <div class="modal__content">                                                                        
+    <div class="modal-header">
+      <p class="txt-m m-0">レビュー</p>
+    </div>
+    <div class="modal-form">
+      <%= form_with(model: [@book, @review], local:true) do |f| %>
+        <div class="p-4">
+          <%= f.text_area :content, class: "p-2 modal-textarea", placeholder: "ここにレビューを記載してください", rows: 10 %>
+        </div>
+          <%= f.hidden_field :book_id, value: @book.isbn %>
+        <div class="pl-4 pb-4">
+          <%= f.radio_button :status, "draft", class: "radiobutton" %>
+          <%= f.label :status_draft, "下書き", class:"txt-xxs" %>
+          <%= f.radio_button :status, "published", class: "radiobutton" %>
+          <%= f.label :status_published, "公開", class:"txt-xxs ml-2" %>
+        </div>
+        <div class="bg-gray review-submit text-right">
+          <%= f.submit '投稿する', class: 'submit-btn' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

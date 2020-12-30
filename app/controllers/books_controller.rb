@@ -5,6 +5,7 @@ class BooksController < ApplicationController
     @book = Book.find_by(isbn: params[:id])
     @bookcase = Bookcase.new
     @reviews = @book.reviews.where(status: 1).order(updated_at: :desc).page(params[:page]).per(6)
+    @review = current_user.reviews.new
   end
   
   def search
