@@ -17,22 +17,26 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.build(review_params)
     if @review.save
+      flash[:success] = "投稿しました"
       redirect_to book_review_path(@book, @review)
     else
-      flash[:success] = "投稿できませんでした"
+      flash[:danger] = "レビューが空欄です。投稿できませんでした。"
       redirect_to book_url(@book)
     end
   end
 
   def update
-    unless @review.update(review_params)
-      flash[:success] = "投稿できませんでした"
+    if @review.update(review_params)
+      flash[:success] = "投稿しました"
+    else
+      flash[:danger] = "レビューが空欄です。投稿できませんでした"
     end
     redirect_to book_review_path(@book, @review)
   end
 
   def destroy
     @review.destroy
+    flash[:success] = "投稿を削除しました"
     redirect_to root_url
   end
 

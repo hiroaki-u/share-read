@@ -72,8 +72,9 @@
 /*-----------------------*/
 /*--ユーザーのプロフィールページ(users/show)--*/
 /*-----------------------*/
-.profile-detail {
+.user-page-bar-lists {
   display: flex;
+  width: 100%;
 }
 
 .user-page-bar {
@@ -82,30 +83,34 @@
   height: 72px;
 }
 
-.user-page-bar ul {
+.user-page-bar-list {
   width: 100%;
-}
-
-.current-user-page-bar {
-  width: 20%;
   box-sizing: border-box;
   text-align: center;
   line-height: 68px;
 }
 
-.other-user-page-bar {
-  width: 25%;
-  box-sizing: border-box;
-  text-align: center;
-  line-height: 68px;
-}
-
-.user-page-bar ul li a {
+.user-page-bar-list a {
   font-weight: bold;
   display: block;
 }
 
-.user-page-bar ul li a:not(.page-active):hover {
+@media screen and (max-width: 767px) {
+  .user-page-bar {
+    height: auto;
+  }
+  .user-page-bar-lists {
+    display: block;
+  }
+  .user-page-bar-list {
+    line-height: 30px;
+  }
+  .row {
+    margin: 0;
+  }
+}
+
+.user-page-bar-list a:not(.page-active):hover {
   background-color: #dcdcdc;
   border-bottom: 3px solid #dcdcdc;
 }
@@ -117,25 +122,12 @@
 /*-----------------------*/
 /*--フォローページ(_follow_user)(followings, followers)--*/
 /*-----------------------*/
-.user-list {
-  display: grid;
-  grid-template: auto/ 33% 33% 33%;
+.follow-user {
+  border-bottom: 1px solid #dcdcdc;
 }
 
-.follow_user {
-  margin: 10px;
-  box-sizing: border-box;
-}
-
-.user-review-books {
-  display: grid;
-  grid-template: auto/ 33% 33% 33%;
-}
-
-.user-review-book {
-  margin: 0 0 20px 20px;
-  box-sizing: border-box;
-  border: 1px solid #dcdcdc;
+.follow-user-info {
+  width: 30px;
 }
 
 .follow-btn {

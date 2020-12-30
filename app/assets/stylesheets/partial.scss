@@ -3,10 +3,13 @@
 /*-----------------------*/
 .f-message {
   position: fixed;
-  top: 57px;
+  top: 75px;
   right: 5px;
   z-index: 9;
   border: 1px solid #dcdcdc;
+}
+.close:focus {
+  outline: none;
 }
 
 /*-----------------------*/

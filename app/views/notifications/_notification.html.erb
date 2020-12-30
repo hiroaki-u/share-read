@@ -2,7 +2,7 @@
 <% notifications.each do |notification| %>
   <% visitor = notification.visitor %>
   <% visited = notification.visited %>
-  <div class="d-flex col-12">
+  <div class="flex mb-3 notice-box">
     <%= link_to user_path(visitor) do %>
       <% if notification.visitor.user_image? %>
         <%= image_tag(visitor.user_image.url, class: "user-image") %>
@@ -10,17 +10,19 @@
         <%= image_tag("user_default.png", class: "user-image") %>
       <% end %>
     <% end %>
-    <strong><%= link_to "#{visitor.name}さん", user_path(visitor) %></strong><span>が</span>
-    <% case notification.action %>
-      <% when "follow" then %>
-        <p>あなたをフォローしました</p>
-      <% when "favorite" then %>
-        <p><%= link_to "あなたの投稿", book_review_path(notification.review.book,notification.review) %>をお気に入りに登録しました</p>
-      <% when "comment" then %>
-        <% if notification.review.user_id == visited.id %>
-          <p><%= link_to "あなたの投稿", book_review_path(notification.review.book,notification.review) %>にコメントしました</p>
-        <% end %>
-    <% end %>
-    <small class="text-muted"><%= time_ago_in_words(notification.created_at).upcase %>前</small>
+    <div class="notice-message flex">
+      <b><%= link_to "#{visitor.name}さん", user_path(visitor) %></b><span>が</span>
+      <% case notification.action %>
+        <% when "follow" then %>
+          <p>あなたをフォローしました</p>
+        <% when "favorite" then %>
+          <p><%= link_to "あなたの投稿", book_review_path(notification.review.book,notification.review) %>をお気に入りに登録しました</p>
+        <% when "comment" then %>
+          <% if notification.review.user_id == visited.id %>
+            <p><%= link_to "あなたの投稿", book_review_path(notification.review.book,notification.review) %>にコメントしました</p>
+          <% end %>
+      <% end %>
+    </div>
+    <small class="text-muted pl-2"><%= time_ago_in_words(notification.created_at).upcase %>前</small>
   </div>
 <% end %>

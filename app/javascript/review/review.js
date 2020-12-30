@@ -19,9 +19,4 @@ $(document).on('turbolinks:load', function(){
       $(".review-alert").css('display', 'none')
     }
   });
-
-  //お気に入りボタン
-  $(".favorite-btn").onclick(function(){
-    $(".favorite-btn").animate({"opacity": "0.5"})
-  })
 });

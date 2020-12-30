@@ -1,22 +1,28 @@
-<div class="user-list">
-  <% users.each do |user| %>
-    <div class="follow-user">
-      <div>
-        <% if user.user_image? %>
-          <%= image_tag(user.user_image.url, class: "user-image") %>
-        <% else %>
-          <%= image_tag("user_default.png", class: "user-image") %>
-        <% end %>
-        <%= user.name %>
-        <p>最近レビューした本</p>
-      </div>
-      <div class="user-review-books">
-        <% user.reviews.first(3).each do |review| %>
-          <div class="user-review-book">
-            <%= link_to (image_tag review.book.image_url, class: "book-image"), book_url(review.book) %>
+<div class="container mt-5">
+  <div class="offset-md-1 col-md-10">
+    <% users.each do |user| %>
+      <div class="follow-user flex mt-2">
+        <div>
+          <% if user.user_image? %>
+            <%= image_tag(user.user_image.url, class: "user-image-l") %>
+          <% else %>
+            <%= image_tag("user_default.png", class: "user-image-l") %>
+          <% end %>
+        </div>
+        <div class="pl-2">
+          <div class="flex-between">
+            <p class="txt-xs mb-1"><%= user.name %></p>
+            <div id="follow_buttons_<%= user.id %>"><%= render "relationships/follow_button", user: user %></div>
           </div>
-        <% end %>
+          <div class="flex">
+            <div class="follow-user-info">
+              <p class="txt-xxs m-0"><%= user.gender %></p>
+              <p class="txt-xxs m-0"><%= user_age %>歳</p>
+            </div>
+            <p class="pl-3 pr-3 pt-2"><%= (user.introduction).truncate(45) %></p>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

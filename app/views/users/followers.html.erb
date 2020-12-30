@@ -1,2 +1,8 @@
 <%= render "profile" %>
-<%= render "follow_user", users: @followers %>
+<% if @followers.present? %>
+  <%= render "follow_user", users: @followers %>
+<% else %>
+  <div class="container text-center mt-5 mb-5">
+    <p>フォロワーはまだいません。</p>
+  </div>
+<% end %>

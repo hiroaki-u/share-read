@@ -8,6 +8,6 @@
     <% @reviews.each do |review| %>
       <%= render "partial/book_review", review: review %>
     <% end %>
-    <%= paginate @reviews %>
   </div>
+  <%= paginate @reviews %>
 </div>

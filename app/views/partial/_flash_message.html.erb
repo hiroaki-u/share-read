@@ -1,3 +1,14 @@
 <% flash.each do |message_type, message| %>
-  <div class="f-message alert alert-<%= message_type %>"><%= message %></div>
+  <% if message_type == "success" %>
+    <div class="f-message alert alert-<%= message_type %>">
+      <i class="far fa-check-circle fa-lg"></i> <%= message %>
+      <button type="button" class="close pl-1" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+  <% if message_type == "danger" %>
+    <div class="f-message alert alert-<%= message_type %>">
+      <i class="fas fa-exclamation-circle"></i></i> <%= message %>
+      <button type="button" class="close pl-1" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
 <% end %>

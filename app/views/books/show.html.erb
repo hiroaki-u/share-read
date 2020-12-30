@@ -14,7 +14,7 @@
     </div>
   </div>
 </div>
-<div class="bg-gray">
+<div class="bg-gray pb-5">
   <div class="container pt-3">
     <p class="mt-2 ml-2"><b>＜レビュー一覧＞</b></p>
   </div>
@@ -48,10 +48,10 @@
           </div>
         </div>
       <% end %>
-      <%= paginate @reviews %>
     <% else %>
       <p class="ml-2">レビューはまだありません。</p>
     <% end %>
+    <%= paginate @reviews %>
   </div>
 </div>
 <%= render "reviews/review_new" %>

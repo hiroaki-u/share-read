@@ -1,4 +1,11 @@
 <%= render "profile" %>
-<div class="container mt-5">
-  <%= render "partial/book_list", books: @bookcases %>
-</div>
+<% if @bookcases.present? %>
+  <div class="container mt-5">
+    <%= render "partial/book_list", books: @bookcases %>
+    <%= paginate @bookcases %>
+  </div>
+<% else %>
+  <div class="container text-center mt-5 mb-5">
+    <p>本棚にはまだ本がありません。</p>
+  </div>
+<% end %>
