@@ -26,13 +26,110 @@
   border-radius: 5px;
 }
 
-.fa-edit {
+.edit-review-btn {
+  background-color: #fff;
   color: $main_color;
+  border: none;
+}
+
+.edit-review-btn:focus {
+  outline: none;
 }
 
 .fa-trash {
   color: #bbbbbb;
 }
+
+/*-----------------------*/
+/*--投稿modal--*/
+/*-----------------------*/
+.modal {
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.modal-bg {
+  background: rgba(255, 255, 255, 0.7);
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+}
+.modal-content {
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  border: 1px solid #000000;
+}
+
+.modal-header {
+  border: none;
+  padding: 10px;
+  background-color: #4a85c7;
+  color: #fff;
+  font-weight: 500;
+  border-left: 10px solid #3069b0;
+}
+
+.modal-textarea {
+  position: relative;
+  width: 100%;
+  resize: none;
+}
+
+.modal-form {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.review-submit {
+  border-radius: 3px;
+}
+
+.review-submit .submit-btn {
+  padding: 10px 20px;
+  margin: 20px;
+  position: relative;
+  right: 0;
+}
+
+.review-radiobutton {
+  display: none;
+}
+.review-submit label {
+  border: 1px solid #dcdcdc;
+  color: #999999;
+  padding: 10px 20px;
+  border-radius: 3px;
+}
+.review-radiobutton:checked + label {
+  border: 1px solid $light-red;
+  color: $light-red;
+}
+
+.review-alert {
+  display: none;
+  background-color: $light-red;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.close-btn {
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  color: #fff;
+  padding: 5px 10px;
+}
+.close-btn:focus {
+  outline: none;
+}
+
 /*-----------------------*/
 /*--Reivewパーシャルページ(_book_review)*/
 /*-----------------------*/

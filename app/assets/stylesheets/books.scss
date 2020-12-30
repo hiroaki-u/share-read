@@ -1,4 +1,11 @@
 /*-----------------------*/
+/*--レビューボタン--*/
+/*-----------------------*/
+.new-review-button {
+  padding: 10.5px 40px;
+}
+
+/*-----------------------*/
 /*--本棚ボタン--*/
 /*-----------------------*/
 .unregister-submit-btn {
@@ -28,77 +35,4 @@
   padding: 10.5px 31.5px;
   border-radius: 5px;
   border: 1px solid #888888;
-}
-
-/*-----------------------*/
-/*--新規投稿ボタン--*/
-/*-----------------------*/
-
-.content {
-  margin: 0 auto;
-  padding: 40px;
-}
-
-.modal {
-  display: none;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-.modal__bg {
-  background: rgba(255, 255, 255, 0.7);
-  height: 100vh;
-  position: absolute;
-  width: 100%;
-}
-.modal__content {
-  background: #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  border: 1px solid #000000;
-}
-
-.modal-header {
-  border: none;
-  padding: 10px;
-  background-color: #4a85c7;
-  color: #fff;
-  font-weight: 500;
-  border-left: 10px solid #3069b0;
-}
-
-.modal-textarea {
-  position: relative;
-  width: 100%;
-  resize: none;
-}
-
-.modal-form {
-  position: relative;
-  box-sizing: border-box;
-}
-
-.review-submit .submit-btn {
-  padding: 10px 20px;
-  margin: 20px;
-  position: relative;
-  right: 0;
-}
-
-.radiobutton {
-  display: none;
-}
-label {
-  border: 1px solid #dcdcdc;
-  color: #999999;
-  padding: 10px 20px;
-  border-radius: 3px;
-}
-.radiobutton:checked + label {
-  border: 1px solid $light-red;
-  color: $light-red;
 }

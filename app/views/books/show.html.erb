@@ -12,8 +12,8 @@
       <div class="ml-3 mt-3">
         <p class="txt-author txt-xs">著者名：<%= @book.author %></p>
         <div class="mt-5 ml-4">
-          <div class="content"><%= link_to "レビューを書く", book_path(@book),class: "submit-btn js-modal-open" %></div>
-          <div class="mt-4 mb-4" id="register_buttons_<%= @book.id %>"><%= render "bookcases/register_button" %></div>
+          <button class="submit-btn post-review-button txt-xs">レビューを書く</button>
+          <div class="mt-3 mb-4" id="register_buttons_<%= @book.id %>"><%= render "bookcases/register_button" %></div>
           <%= link_to "楽天購入ページへ", @book.url, class: "purchase-btn" %>
         </div>
       </div>
