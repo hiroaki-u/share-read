@@ -1,8 +1,23 @@
+.book-page-btn {
+  align-items: center;
+}
+
 /*-----------------------*/
 /*--レビューボタン--*/
 /*-----------------------*/
-.new-review-button {
-  padding: 10.5px 40px;
+.post-review-button {
+  padding: 11px 40px;
+}
+
+.book-review-contents {
+  display: grid;
+  grid-template: auto/ 33% 33% 33%;
+}
+.book-review-content {
+  margin: 0 20px 20px 0;
+  padding: 15px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dcdcdc;
 }
 
 /*-----------------------*/
@@ -11,7 +26,7 @@
 .unregister-submit-btn {
   background-color: $light-red;
   color: #fff;
-  padding: 10.5px 56px;
+  padding: 11px 56px;
   border-radius: 5px;
   border: none;
 }
@@ -24,7 +39,7 @@
 .register-submit-btn {
   background-color: #fff;
   color: $light-red;
-  padding: 10.5px 31.5px;
+  padding: 10px 31.5px;
   border-radius: 5px;
   border: 1px solid $light-red;
 }
@@ -32,7 +47,7 @@
 .purchase-btn {
   background-color: #fff;
   color: #888888;
-  padding: 10.5px 31.5px;
+  padding: 13px 31.5px;
   border-radius: 5px;
   border: 1px solid #888888;
 }
