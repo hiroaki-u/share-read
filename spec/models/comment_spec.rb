@@ -10,7 +10,7 @@ RSpec.describe Comment, type: :model do
       expect(@comment).to be_valid
     end
     it "contentが1文字であれば有効" do
-      @comment.content = Faker::String.random(length: 1)
+      @comment.content = "a"
       expect(@comment).to be_valid
     end
     it "contentが255文字であれば有効" do

@@ -10,7 +10,7 @@ RSpec.describe Review, type: :model do
       expect(@review).to be_valid
     end
     it "contentが1文字であれば有効" do
-      @review.content = Faker::String.random(length: 1)
+      @review.content = "a"
       expect(@review).to be_valid
     end
     it "contentが1200文字であれば有効" do
