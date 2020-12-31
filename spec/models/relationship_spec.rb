@@ -6,7 +6,7 @@ RSpec.describe Relationship, type: :model do
   end
   
   context "フォローできる時" do
-    it "フォローしていない時有効" do
+    it "まだフォローしていない時有効" do
       expect(@relationship).to be_valid
     end
   end

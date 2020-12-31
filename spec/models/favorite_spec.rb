@@ -6,7 +6,7 @@ RSpec.describe Favorite, type: :model do
   end
   
   context "お気に入り登録できる時" do
-    it "お気に入り登録をしていない時有効" do
+    it "まだお気に入り登録をしていない時有効" do
       expect(@favorite).to be_valid
     end
   end
