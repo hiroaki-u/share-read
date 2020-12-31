@@ -6,7 +6,7 @@ RSpec.describe Relationship, type: :model do
   end
   
   context "フォローできる時" do
-    it "ユーザーの結びつけができていれば有効" do
+    it "フォローしていない時有効" do
       expect(@relationship).to be_valid
     end
   end
@@ -22,6 +22,15 @@ RSpec.describe Relationship, type: :model do
       @relationship.follow = nil
       @relationship.valid?
       expect(@relationship.errors.full_messages).to include("Followを入力してください")
+    end
+
+    it '既にフォローしたuserを再度フォローするとエラーが発生' do
+      @relationship.save
+      @relationship_repeat = FactoryBot.build(:relationship)
+      @relationship_repeat.user = @relationship.user
+      @relationship_repeat.follow = @relationship.follow
+      @relationship_repeat.valid?
+      expect(@relationship_repeat.errors.full_messages).to include("Followはすでに存在します")
     end
   end
 end
