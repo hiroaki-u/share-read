@@ -11,7 +11,7 @@
       <% end %>
     <% end %>
     <div class="notice-message flex">
-      <b><%= link_to "#{visitor.name}さん", user_path(visitor) %></b><span>が</span>
+      <%= link_to "#{visitor.name}", user_path(visitor), class: "notice-name" %><span>さんが</span>
       <% case notification.action %>
         <% when "follow" then %>
           <p>あなたをフォローしました</p>

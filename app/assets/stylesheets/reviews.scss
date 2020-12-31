@@ -181,6 +181,12 @@
   color: $light-red;
 }
 
+.f-btn:active {
+  font-size: 20px;
+  position: relative;
+  top: 0.5px;
+  left: 0.5px;
+}
 /*-----------------------*/
 /*--コメント--*/
 /*-----------------------*/

@@ -5,9 +5,9 @@
         <!-- ユーザーの画像 -->
         <div>
           <% if comment.user.user_image? %>
-            <a href="<%= user_url(comment.user.id) %>"><%= image_tag comment.user.user_image.url, class: "user-image" %></a>
+            <%= link_to (image_tag comment.user.user_image.url, class: "user-image"), user_path(comment.user.id) %>
           <% else %>
-            <a href="<%= user_url(comment.user.id) %>"><%= image_tag "user_default", class: "user-image" %></a>
+            <%= link_to (image_tag "user_default", class: "user-image"), user_path(comment.user.id) %>
           <% end %>      
         </div>
         <!-- ユーザー名 -->

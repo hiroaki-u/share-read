@@ -4,14 +4,14 @@
       <div class="follow-user flex mt-2">
         <div>
           <% if user.user_image? %>
-            <%= image_tag(user.user_image.url, class: "user-image-l") %>
+            <%= link_to (image_tag user.user_image.url, class: "user-image-l"), user_path(user) %>
           <% else %>
-            <%= image_tag("user_default.png", class: "user-image-l") %>
+            <%= link_to (image_tag "user_default.png", class: "user-image-l"), user_path(user) %>
           <% end %>
         </div>
         <div class="pl-2">
           <div class="flex-between">
-            <p class="txt-xs mb-1"><%= user.name %></p>
+            <%= link_to user.name, user_path(user), class: "txt-xs mb-1" %>
             <div id="follow_buttons_<%= user.id %>"><%= render "relationships/follow_button", user: user %></div>
           </div>
           <div class="flex">

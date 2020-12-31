@@ -3,14 +3,16 @@
     <%= form_with(model: current_user.favorites.find_by(review_id: review.id), method: :delete) do |f| %>
       <%= hidden_field_tag :review_id, review.id %>
       <%= button_tag type: "submit",class: "favorite-btn" do %>
-        <i class="fas fa-heart fa-lg favorite-heart"></i><small class="subscript"><%= review.favored.count %></small>
+        <i class="fas fa-heart fa-lg favorite-heart f-btn"></i>
+        <small class="subscript"><%= review.favored.count %></small>
       <% end %>
     <% end %>
   <% else %>
     <%= form_with(model: current_user.favorites.build) do |f| %>
       <%= hidden_field_tag :review_id, review.id %>
       <%= button_tag type: "submit",class: "favorite-btn" do %>
-        <i class="far fa-heart fa-lg"></i><small class="subscript"><%= review.favored.count %></small>
+        <i class="far fa-heart fa-lg f-btn"></i>
+        <small class="subscript"><%= review.favored.count %></small>
       <% end %>
     <% end %>
   <% end %>

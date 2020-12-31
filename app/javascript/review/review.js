@@ -1,11 +1,11 @@
-$(document).on('turbolinks:load', function(){
+$(document).on("turbolinks:load", function(){
   //modalの機能
-  $('.post-review-button').on('click',function(){
-    $('.review-modal').fadeIn();
+  $(".post-review-button").on("click",function(){
+    $(".review-modal").fadeIn();
     return false;
   });
-  $('.modal-close').on('click',function(){
-    $('.review-modal').fadeOut();
+  $(".modal-close").on("click",function(){
+    $(".review-modal").fadeOut();
     return false;
   });
 

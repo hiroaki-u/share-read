@@ -1,6 +1,6 @@
 <div class="book-review-box">
   <div class="review-content">
-    <%= link_to book_review_url(review.book, review) do %>
+    <%= link_to book_review_path(review.book, review) do %>
       <div class="flex mb-3">
         <div> 
           <% if review.user.user_image? %>
