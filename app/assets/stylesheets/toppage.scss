@@ -4,22 +4,60 @@
 
 .topwrapper {
   background-image: url("toppage.jpg");
-  height:600px;
+  height: 600px;
   background-size: cover;
   background-position: center;
   height: 400px;
 }
 
-.toppage-message {
-  position: relative;
-  top: 180px;
-  left: 50px;
-  color: #fff;
+.all-review-btn {
+  background-color: $pale-blue;
+  display: inline-block;
+  position: absolute;
+  right: 15%;
+  border-radius: 10px;
 }
+
+.all-review-btn p {
+  padding: 10px 25px;
+  box-sizing: border-box;
+}
+
+.review-list {
+  background-color: #fff;
+}
+
 /*-----------------------*/
 /*--ログイン時--*/
 /*-----------------------*/
+.topwrapper-login-message {
+  font-family: "Noto Serif JP", serif;
+  position: relative;
+  top: 90px;
+  left: 80px;
+}
 
 /*-----------------------*/
 /*--非ログイン時--*/
 /*-----------------------*/
+.topwrapper-logo {
+  position: relative;
+  top: 100px;
+  left: 100px;
+}
+.top_logo-l {
+  width: 120px;
+}
+
+.site-title-l {
+  font-size: 40px;
+  font-family: "Josefin Sans", sans-serif;
+  line-height: 100px;
+}
+
+.concept-message-detail {
+  font-family: "Noto Serif JP", serif;
+  position: relative;
+  top: 90px;
+  left: 50px;
+}

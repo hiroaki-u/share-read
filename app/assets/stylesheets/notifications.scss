@@ -1,3 +1,10 @@
-// Place all the styles related to the notifications controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.notice-box {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.notice-message {
+  padding: 12.5px;
+}
+.notice-name {
+  font-weight: bold;
+}

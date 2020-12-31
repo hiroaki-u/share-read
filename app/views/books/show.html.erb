@@ -1,46 +1,57 @@
-<div class="row">
-  <div class="col-3">
-    <%= image_tag(@book.image_url, class: "book-image") %>
-  </div>
-  <div class="col-9">
-    <div>
-      <%= @book.title %>
-      <%= @book.author %>
-    </div>
-    <div>
-      <%= link_to "レビューを書く", new_book_review_path(@book) %>
-      <div id="register_buttons_<%= @book.id %>"><%= render "bookcases/register_button" %></div>
-      <%= link_to "楽天購入ページへ", @book.url %>
+<div class="container flex mt-5 mb-5">
+  <diV>
+    <%= image_tag(@book.image_url, class: "book-image-l") %>
+  </diV>
+  <div class="ml-3 mt-2">
+    <p class="txt-m"> <%= @book.title %></p>
+    <p class="txt-author txt-xs thin-font ml-3">著者名：<%= @book.author %></p>
+    <p class="thin-font txt-xs ml-3">本の概要：<br><%= @book.caption %></p>
+    
+    <div class="mt-5 ml-4 flex book-page-btn">
+      <div class="mr-3"><button class="submit-btn post-review-button txt-xs">レビューを書く</button></div>
+      <div class="mr-3" id="register_buttons_<%= @book.id %>"><%= render "bookcases/register_button" %></div>
+      <div><%= link_to "楽天購入ページへ", @book.url, class: "purchase-btn" %></div>
     </div>
   </div>
 </div>
-<div class="book_review_boxs">
-  <% @book.reviews.each do |review| %>
-    <div class="book_review_box"> 
-      <%= link_to book_review_url(review.book, review) do %>
-        <div class="review-content">
-          <div class="review-content-detail">
-            <div class="review-content-user">
-              <div classs="mr-2"> 
-                <% if review.user.user_image? %>
-                  <%= link_to (image_tag review.user.user_image.url, class: "user-image"), user_url(review.user)  %>
-                <% else %>
-                  <%= image_tag("user_default.png", class: "user-image") %>
-                <% end %>
+<div class="bg-gray pb-5">
+  <div class="container pt-3">
+    <p class="mt-2 ml-2"><b>＜レビュー一覧＞</b></p>
+  </div>
+  <div class="container book-review-contents">
+    <% if @reviews.exists? %>
+      <% @reviews.each do |review| %>
+        <div class="book-review-content">
+          <div class="review-content">
+            <%= link_to book_review_path(review.book, review) do %>
+              <div class="flex mb-3">
+                <div> 
+                  <% if review.user.user_image? %>
+                    <%= image_tag(review.user.user_image.url, class: "user-image") %>
+                  <% else %>
+                    <%= image_tag("user_default.png", class: "user-image") %>
+                  <% end %>
+                </div>
+                <p class="thin-font pt-2 pl-2"><%= review.user.name %></p>
               </div>
-              <div class="user-name">
-                <p><%= review.user.name %></p>
-                <p><%= review.updated_at %></p>
+              <div class="review-content-detail">
+                <%= simple_format(strip_tags(review.content).truncate(60), class:"thin-font margin-0") %>
               </div>
+            <% end %>
+          </div>
+          <div class="review-sub mt-2">
+            <div class="flex">
+              <div class="favorite_buttons_<%= review.id %>"><%= render "favorites/favorite_button", review: review %></div>
+              <div class="pl-3"><i class="far fa-comment fa-lg"></i><small class="subscript"><%= review.comments.count %></small></div>
             </div>
-            <p><%= simple_format(strip_tags(review.content).truncate(10)) %></p>
+            <small class="text-muted"><%= time_ago_in_words(review.updated_at).upcase %>前</small>
           </div>
         </div>
-        <div class="reactions">
-          <a>いいね</a>
-          <a>コメント</a>
-        </div>
       <% end %>
-    </div>
-  <% end %>
+    <% else %>
+      <p class="ml-2">レビューはまだありません。</p>
+    <% end %>
+    <%= paginate @reviews %>
+  </div>
 </div>
+<%= render "reviews/review_new" %>

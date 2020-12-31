@@ -1,0 +1,44 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="flex col-lg-5">
+      <div class="profile-image">
+        <% if @user.user_image? %>
+          <%= image_tag(@user.user_image.url, class: "profile-image") %>
+        <% else %>
+          <%= image_tag("user_default.png", class: "profile-image") %>
+        <% end %>
+      </div>
+      <div class="user-detail mt-3 ml-3">
+        <p class="txt-m"><b><%= @user.name %></b></p>
+        <p>年齢：<%= user_age %> 歳</p>
+        <p>性別：<%= @user.gender %></p>
+        <div id="follow_buttons_<%= @user.id %>"><%= render "relationships/follow_button", user: @user %></div>
+      </div>
+    </div>
+    <div class="introduction col-lg-7 mt-4">
+      <p><b>自己紹介：</b></p>
+      <% if @user.introduction? %>
+        <p><%= simple_format(@user.introduction) %></p>
+      <% else %>
+        <p>自己紹介はまだ書かれていません。</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="user-page-bar mt-5 mb-3">
+  <div class="container">
+    <ul class="user-page-bar-lists">
+    <% if current_user == @user %>
+      <li class="user-page-bar-list"><%= link_to "タイムライン", user_path(@user), class: " #{'page-active' if current_page?(user_path(@user))}" %></li>
+      <li class="user-page-bar-list"><%= link_to "お気に入り", favorites_user_path(@user), class: " #{'page-active' if current_page?(favorites_user_path(@user))}" %></li>
+      <li class="user-page-bar-list"><%= link_to "下書き", draft_user_path(current_user), class: " #{'page-active' if current_page?(draft_user_path(current_user))}" %></li>
+    <% else %>
+      <li class="user-page-bar-list"><%= link_to "投稿一覧", user_path(@user), class: " #{'page-active' if current_page?(user_path(@user))}" %></li>
+      <li class="user-page-bar-list"><%= link_to "お気に入り", favorites_user_path(@user), class: " #{'page-active' if current_page?(favorites_user_path(@user))}" %></li>
+    <% end %>
+      <li class="user-page-bar-list"><%= link_to "本棚", bookcases_user_path(@user), class: " #{'page-active' if current_page?(bookcases_user_path(@user))}" %></li>
+      <li class="user-page-bar-list"><%= link_to "フォロー中 (#{@user.followings.count})", followings_user_path(@user), class: " #{'page-active' if current_page?(followings_user_path(@user))}" %></li>
+      <li class="user-page-bar-list"><%= link_to "フォロワー (#{@user.followers.count})", followers_user_path(@user), class: " #{'page-active' if current_page?(followers_user_path(@user))}" %></li>
+    </ul>
+  </div>
+</div>

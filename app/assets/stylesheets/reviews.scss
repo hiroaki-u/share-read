@@ -1,17 +1,199 @@
+.txt-author {
+  color: #3c6ea6;
+}
+
 /*-----------------------*/
-/*--Reivew詳細ページ(review/show)*/
+/*--Reivew詳細(review/show)*/
 /*-----------------------*/
-.review-detail {
+.review-detail-box {
+  margin: 0 20px 20px 0;
   padding: 15px;
   box-sizing: border-box;
-  border: 1px solid #dcdcdc;
 }
 
 .review-detail-content {
-  margin: 0;
-  border-bottom: 1px solid #e7e6e6;
+  width: 100%;
 }
 
-.review-detail-user {
+.review-detail-head {
   display: flex;
+  justify-content: space-between;
+}
+
+.draft-icon {
+  background-color: $pale-blue;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.edit-review-btn {
+  background-color: #fff;
+  color: $main_color;
+  border: none;
+  padding: 0 !important;
+}
+
+.edit-review-btn:focus {
+  outline: none;
+}
+
+.fa-trash {
+  color: #bbbbbb;
+}
+
+/*-----------------------*/
+/*--投稿modal--*/
+/*-----------------------*/
+.modal {
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.modal-bg {
+  background: rgba(255, 255, 255, 0.7);
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+}
+.modal-content {
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  border: 1px solid #000000;
+}
+
+.modal-header {
+  border: none;
+  padding: 10px;
+  background-color: #4a85c7;
+  color: #fff;
+  font-weight: 500;
+  border-left: 10px solid #3069b0;
+}
+
+.modal-textarea {
+  position: relative;
+  width: 100%;
+  resize: none;
+}
+
+.modal-form {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.review-submit {
+  border-radius: 3px;
+}
+
+.review-submit .submit-btn {
+  padding: 10px 20px;
+  margin: 20px;
+  position: relative;
+  right: 0;
+}
+
+.review-radiobutton {
+  display: none;
+}
+.review-submit label {
+  border: 1px solid #dcdcdc;
+  color: #999999;
+  padding: 10px 20px;
+  border-radius: 3px;
+}
+.review-radiobutton:checked + label {
+  border: 1px solid $light-red;
+  color: $light-red;
+}
+
+.review-alert {
+  display: none;
+  background-color: $light-red;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.close-btn {
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  color: #fff;
+  padding: 5px 10px;
+}
+.close-btn:focus {
+  outline: none;
+}
+
+/*-----------------------*/
+/*--Reivewパーシャルページ(_book_review)*/
+/*-----------------------*/
+.book_review_boxs {
+  display: grid;
+  grid-template: auto/ 50% 50%;
+  background-color: #fff;
+}
+
+.book-review-box {
+  margin: 0 20px 20px 0;
+  padding: 15px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.review-content:hover {
+  opacity: 0.7;
+}
+
+.review-content-detail {
+  padding: 0;
+}
+
+.review-sub {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-delete {
+  right: 15px;
+}
+
+/*-----------------------*/
+/*--お気に入りボタン(_favorite_button)--*/
+/*-----------------------*/
+.favorite-btn {
+  background-color: transparent;
+  border: none;
+  vertical-align: bottom;
+}
+
+.favorite-btn:focus {
+  outline: none;
+}
+
+.favorite-heart {
+  color: $light-red;
+}
+
+.f-btn:active {
+  font-size: 20px;
+  position: relative;
+  top: 0.5px;
+  left: 0.5px;
+}
+/*-----------------------*/
+/*--コメント--*/
+/*-----------------------*/
+.comment-boxs {
+  padding: 20px;
+}
+
+.comment-box {
+  border-bottom: 1px solid #dcdcdc;
 }

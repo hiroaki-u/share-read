@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   get 'books/search', to: "books#search"
   resources :books, only: %i[show] do 
-    resources :reviews, except: %i[index] do 
+    resources :reviews, only: %i[show create update destroy] do 
       resources :comments, only: %i[create update edit destroy]
     end
     collection do

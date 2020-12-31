@@ -1,38 +1,42 @@
 <div class="text-center">
-  <p class="txt-xl mb-5 mt-5"><i class="far fa-user"></i> アカウント設定</p>
-</div>
-
-<div class="row">                                                                           
-  <div class="offset-sm-3 col-sm-6">
+  <p class="txt-xl headline mb-5 mt-5">アカウント設定</p>
+</div> 
+<div class="row">                                               
+  <div class="offset-sm-2 col-sm-8">
     <%= form_with(model: @user, local:true) do |f| %>
-      <div class="form-group">
-        <%= f.label :name, "ユーザー名" %>
-        <%= f.text_field :name, class: "form-control" %>
+    <%= render 'partial/error_messages', model: f.object %>
+      <div class="form-item flex">
+        <%= f.label :name, "名前", class: "form-label" %>
+        <%= f.text_field :name, class: "form-input" %>
       </div>
-      
-      <div class="form-group">
-        <p>性別</p>
-        <%= f.label :gender, "男性" %>
-        <%= f.radio_button :gender, "男性", class: "mr-2" %>
-        <%= f.label :gender, "女性" %>
-        <%= f.radio_button :gender, "女性", class: "mr-2" %>
+      <div class="form-item flex">
+        <div class="form-label">
+          <p class="gender">性別</p>
+        </div>
+        <div class="form-input">
+          <%= f.label :gender, "男性" %>
+          <%= f.radio_button :gender, "男性", class: "mr-2" %>
+          <%= f.label :gender, "女性" %>
+          <%= f.radio_button :gender, "女性", class: "mr-2" %>
+        </div>
       </div>
-      
-      <div class="form-group">
-        <%= f.label :user_image, "プロフィール画像" %><br>
-        <%= f.file_field :user_image %>
+      <div class="form-item flex">
+        <%= f.label :user_image, "プロフィール画像", class: "form-label" %>
+        <%= f.file_field :user_image, class: "form-input" %>
       </div>
-      
-      <div class="form-group">
-        <%= f.label :birthday, "生年月日" %><br>
-        <%= f.date_select :birthday, {use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), date_separator: "／"} %>
+      <div class="form-item flex">
+        <%= f.label :birthday, "生年月日", class: "form-label" %>
+        <div class="form-input">
+          <%= f.date_select :birthday, {use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), date_separator: "／"} %>
+        </div>
       </div>
-      
-      <div class="form-group">
-        <%= f.label :introduction, "自己紹介" %>
-        <%= f.text_area :introduction, class: "form-control" ,rows: 4 %>
-      </div>      
-      <%= f.submit '変更する', class: 'btn btn-primary btn-block' %>
+      <div class="form-item flex">
+        <%= f.label :introduction, "自己紹介", class: "form-label-introduction" %>
+        <%= f.text_area :introduction, class: "form-input-introduction" ,rows: 3 %>
+      </div>
+      <div class="text-center mt-5">
+        <%= f.submit '更新する', class: 'new-btn submit-btn' %>
+      </div>
     <% end %>
   </div>
 </div>

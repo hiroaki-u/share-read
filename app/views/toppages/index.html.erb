@@ -1,13 +1,21 @@
 <% if logged_in? %>
-  <div class="mb-5 topwrapper">
-    <div class="toppage-message">
-      <p class="txt-shadow txt-xxl">読んだ本をシェアしよう！</p>
+  <div class="topwrapper">
+    <p class="txt-xl topwrapper-login-message">shareして本の知識を自分のものに</p>
+    <div class="flex topwrapper-logo">
+      <%= image_tag("top_logo", class: "top_logo-l") %>
+      <p class="site-title-l pl-3">Share-read</p>
     </div>
   </div>
-  <div class="container">
-    <div class="headline mb-5">
-      <p class="txt-l mb-1"> 最近のレビュー</p>
-      <p class="headline-bar"></p>
+  <div class="container review-list mb-5">
+    <div class="text-center">
+      <div class="headline mt-5 mb-5">
+        <p class="txt-l margin-0"> 最近のレビュー</p>
+      </div>
+      <div class="all-review-btn mt-5">
+        <%= link_to reviews_books_path do %>
+          <p class="margin-0">全てのレビュー<i class="fas fa-chevron-right"></i></p>
+        <% end %>
+      </div>
     </div>
     <div class="book_review_boxs">
       <% @reviews.first(4).each do |review| %>
@@ -16,15 +24,21 @@
     </div>
   </div>
 <% else %>
-  <div class="mb-5 topwrapper">
-    <div class="toppage-message">
-      <p class="txt-shadow txt-xxl">読んだ本をシェアしよう！</p>
+  <div class="topwrapper">
+    <div class="concept-message">
+      <p class="concept-message-detail txt-m mb-2">本を読んでそのままになっていませんか？</p>
+      <p class="concept-message-detail txt-m">本の内容をshareして知識を自分のものにしましょう</p>
+    </div>
+    <div class="flex topwrapper-logo">
+      <%= image_tag("top_logo", class: "top_logo-l") %>
+      <p class="site-title-l pl-3">Share-read</p>
     </div>
   </div>
-  <div class="container">
-    <div class="headline mb-5">
-      <p class="txt-l mb-1"> 最近のレビュー</p>
-      <p class="headline-bar"></p>
+  <div class="container review-list mb-5">
+    <div class="text-center">
+      <div class="headline mt-5 mb-5">
+        <p class="txt-l m-0"> 最近のレビュー</p>
+      </div>
     </div>
     <div class="book_review_boxs">
       <% @reviews.first(4).each do |review| %>

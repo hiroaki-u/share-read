@@ -1,3 +1,56 @@
-// Place all the styles related to the books controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.book-page-btn {
+  align-items: center;
+}
+
+/*-----------------------*/
+/*--レビューボタン--*/
+/*-----------------------*/
+.post-review-button {
+  padding: 11px 40px;
+}
+
+.book-review-contents {
+  display: grid;
+  grid-template: auto/ 33% 33% 33%;
+}
+.book-review-content {
+  margin: 0 20px 20px 0;
+  padding: 15px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dcdcdc;
+  background-color: #fff;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+/*-----------------------*/
+/*--本棚ボタン--*/
+/*-----------------------*/
+.unregister-submit-btn {
+  background-color: $light-red;
+  color: #fff;
+  padding: 11px 56px;
+  border-radius: 5px;
+  border: none;
+}
+
+.register-submit-btn:hover,
+.unregister-submit-btn:hover {
+  opacity: 0.8;
+}
+
+.register-submit-btn {
+  background-color: #fff;
+  color: $light-red;
+  padding: 10px 31.5px;
+  border-radius: 5px;
+  border: 1px solid $light-red;
+}
+
+.purchase-btn {
+  background-color: #fff;
+  color: #888888;
+  padding: 13px 31.5px;
+  border-radius: 5px;
+  border: 1px solid #888888;
+}

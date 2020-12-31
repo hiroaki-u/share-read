@@ -1,45 +1,58 @@
-<div class="review-detail mb-5 mt-5">
-  <div class="review-detail-content row">
-    <div class="col-10">
-      <div class="review-detail-user">
-        <div classs="mr-2"> 
+<div class="container">
+  <div class="review-detail-box mt-3">
+    <div class="flex">
+      <div class="mb-3">
+        <div> 
           <% if @review.user.user_image? %>
-            <%= link_to (image_tag @review.user.user_image.url, class: "user-image"), user_url(@review.user) %>
+            <%= link_to (image_tag @review.user.user_image.url, class: "user-image-l"), user_path(@review.user) %>
           <% else %>
-            <%= link_to (image_tag "user_default.png", class: "user-image"), user_url(@review.user)  %>
+            <%= link_to (image_tag "user_default.png", class: "user-image-l"), user_path(@review.user) %>
           <% end %>
         </div>
-        <div class="user-name">
-          <p><%= @review.user.name %></p>
-          <p><%= @review.updated_at %></p>
+        <%= link_to @review.user.name, user_path(@review.user),class: "thin-font txt-xxs" %>
+      </div>
+      <div class="pl-3 review-detail-content">
+        <div class="review-detail-head">
+          <div class="">
+            <%= link_to @review.book.title, book_path(@review.book), class:"mb-1" %>
+            <p class="thin-font txt-xxs txt-author"><%= @review.book.author %></p>
+          </div>
+          <div>
+            <% if @review.draft? %>
+              <span class="draft-icon">下書き</span>
+            <% end %>
+            <% if current_user == @review.user %>
+              <button class="post-review-button edit-review-btn"><i class="far fa-edit fa-lg"></i></button>
+              <%= link_to [@review.book, @review], method: :delete, data: { confirm: "削除しますか？", cancel: "やめる", commit: "削除する"}, title: "削除確認", class: 'ml-2 mr-2' do  %>
+                <i class="fas fa-trash fa-lg"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="flex-between">
+          <div>
+            <%= simple_format(@review.content, class: "thin-font pr-3") %>
+          </div>
+          <div>
+            <%= link_to (image_tag @review.book.image_url, class: "book-image-l"), book_path(@review.book) %>
+          </div>
         </div>
       </div>
-      <p><%= @review.book.title %></p>
-      <p><%= simple_format(@review.content) %></p>
     </div>
-    <div class="review-content-image col-2">
-      <%= link_to (image_tag @review.book.image_url, class: "book-image"), book_url(@review.book) %>
-    </div>
-  </div>
-  <div class="review-sub mt-2">
-    <div class="reactions">
-      <div class="favorite_buttons_<%= @review.id %>"><%= render "favorites/favorite_button", review: @review %></div>
-      <p>コメント(<%= @review.comments.count %>)</p>
-    </div>
-    <div class="edit-delete">
-      <% if current_user == @review.user %>
-        <%= link_to edit_book_review_path(@review.book, @review), class: 'btn btn-info' do %>
-          <i class="far fa-edit"></i>
-        <% end %>
-        <% if @review.published? %>
-          <i class="fas fa-eye"></i>
-        <% else %>
-          <i class="fas fa-eye-slash"></i>
-        <% end %>
-      <% end %>
+    <div class="review-sub mt-2">
+      <div class="flex">
+        <div class="favorite_buttons_<%= @review.id %>"><%= render "favorites/favorite_button", review: @review %></div>
+        <div class="pl-3"><i class="far fa-comment fa-lg"></i><small class="subscript"><%= @review.comments.count %></small></div>
+      </div>
+      <small class="text-muted"><%= time_ago_in_words(@review.updated_at).upcase %>前</small>
     </div>
   </div>
 </div>
-<% if @review.published? %>
-　<%= render "comments/comment" %>
-<% end %>
+<div class="bg-gray pb-5">
+  <div class="container">
+    <% if @review.published? %>
+      <%= render "comments/comment" %>
+    <% end %>
+  </div>
+</div>
+<%= render "reviews/review_edit" %>

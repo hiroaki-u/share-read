@@ -4,6 +4,8 @@ class BooksController < ApplicationController
   def show
     @book = Book.find_by(isbn: params[:id])
     @bookcase = Bookcase.new
+    @reviews = @book.reviews.where(status: 1).order(updated_at: :desc).page(params[:page]).per(6)
+    @review = current_user.reviews.new
   end
   
   def search
@@ -26,6 +28,7 @@ class BooksController < ApplicationController
         book.save
       end
     end
+    
   end
 
   private
@@ -36,13 +39,15 @@ class BooksController < ApplicationController
     isbn = result["isbn"]
     image_url = result["mediumImageUrl"].gsub('?_ex=120x120', '')
     book_genre_id = result["booksGenreId"]
+    caption = result["itemCaption"]
     {
       title: title,
       author: author,
       url: url,
       isbn: isbn,
       image_url: image_url,
-      book_genre_id: book_genre_id
+      book_genre_id: book_genre_id,
+      caption: caption
     }
   end
 end

@@ -1,4 +1,12 @@
 /*-----------------------*/
+/*--色の設定--*/
+/*-----------------------*/
+$main_color: #293c6f;
+$pale-blue: #dcecf8;
+$light-blue: #1ea0c5;
+$light-red: #ef534b;
+
+/*-----------------------*/
 /*--ページ全体--*/
 /*-----------------------*/
 
@@ -10,6 +18,9 @@ body {
 #wrap {
   overflow: hidden;
 }
+.field_with_errors {
+  display: contents;
+}
 
 /*-----------------------*/
 /*--配置関連--*/
@@ -19,66 +30,145 @@ body {
   justify-content: space-between;
 }
 
+.flex {
+  display: flex;
+}
+
+.subscript {
+  vertical-align: sub;
+}
+
+@media screen and (max-width: 768px) {
+  .sm-none {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .md-none {
+    display: none;
+  }
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.bg-gray {
+  background-color: #f9f9f9;
+}
+
 /*-----------------------*/
 /*--文字--*/
 /*-----------------------*/
-a { color: #000; }
+a {
+  color: #000;
+}
 a:hover {
   text-decoration: none;
   color: #000;
 }
-.txt-xxs { font-size: 12px; }
-.txt-xs{ font-size: 16px; }
-.txt-s{ font-size: 20px; }
-.txt-m{ font-size: 24px; }
-.txt-l{ font-size: 30px; }
-.txt-xl{ font-size: 36px; }
-.txt-xxl{ font-size: 42px; }
 
-.txt-black { color: #000000; }
-.txt-shadow { text-shadow: 1px 2px 3px #808080; }
+.txt-xxs {
+  font-size: 12px;
+}
+
+.txt-xs {
+  font-size: 16px;
+}
+.txt-s {
+  font-size: 20px;
+}
+.txt-m {
+  font-size: 24px;
+}
+.txt-l {
+  font-size: 30px;
+}
+.txt-xl {
+  font-size: 36px;
+}
+.txt-xxl {
+  font-size: 42px;
+}
+
+.txt-black {
+  color: #000000;
+}
+
+ul {
+  list-style: none;
+}
+
+.thin-font {
+  font-family: "Noto Sans JP", sans-serif;
+}
 
 /*-----------------------*/
 /*--見出し文字--*/
 /*-----------------------*/
 
 .headline {
-  text-align: center;
-  font-weight: bolder;
+  margin: 0 auto;
+  display: inline-block;
+  box-shadow: 0 -6px 0 0 #3c6ea6 inset;
 }
 
-.headline-bar {
-  display: inline-block;
-  width: 40px;
-  border-bottom: 2px solid #000000;
-  margin:0 auto;
+/*-----------------------*/
+/*--共通ボタン--*/
+/*-----------------------*/
+.submit-btn {
+  background-color: $main_color;
+  color: #fff;
+  padding: 15px 40px;
+  border-radius: 5px;
+  border: none;
+}
+
+.submit-btn:hover {
+  opacity: 0.8;
 }
 
 /*-----------------------*/
 /*--画像--*/
 /*-----------------------*/
 .profile-image {
-  width: 200px;
-  height: 200px;
+  width: 170px;
+  height: 170px;
   border-radius: 15px;
   border: 1px solid #dcdcdc;
 }
 
 .user-image {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+}
+.user-image-l {
+  width: 70px;
+  height: 70px;
   border-radius: 10px;
   border: 1px solid #dcdcdc;
 }
 
 .book-image {
-  width: 100%;
+  width: 150px;
+  heihgt: auto;
   border: 1px solid #dcdcdc;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.book-image-l {
+  width: 175px;
+  heihgt: auto;
+  border: 1px solid #dcdcdc;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /*画面サイズ変更時の画像*/
 
-@media screen and (max-width: 992px) { 
+@media screen and (max-width: 992px) {
   .user-image {
     width: 65px;
     height: 65px;
@@ -86,7 +176,7 @@ a:hover {
   }
 }
 
-@media screen and (max-width: 767px) { 
+@media screen and (max-width: 767px) {
   .user-image {
     width: 50px;
     height: 50px;

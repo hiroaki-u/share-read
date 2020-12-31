@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{5,32}$+\z/i }
+  # validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{5,128}$+\z/i }
   has_secure_password
   enum gender: { "男性": 1, "女性": 2 }
   mount_uploader :user_image, UserImageUploader
@@ -26,6 +26,10 @@ class User < ApplicationRecord
 
   has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+
+  def feed_reviews
+    Review.where(user_id: self.following_ids + [self.id])
+  end
 
   def follow(other_user)
     relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user

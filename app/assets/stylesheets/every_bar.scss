@@ -1,49 +1,109 @@
+a {
+  font-weight: 300;
+}
 
 /*-----------------------*/
 /*--ヘッダー--*/
 /*-----------------------*/
+
 /*ナビバー*/
 header {
-  margin-bottom: 60px;
+  height: 75px;
+}
+
+.site-title {
+  line-height: 60px;
+  font-size: 24px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+@media screen and (max-width: 540px) {
+  .site-title {
+    display: none;
+  }
+}
+
+/*--検索バー-*/
+
+.search-bar {
+  padding: 0 40px 0 5px;
+  width: 100%;
+  position: relative;
+  top: 11px;
+}
+
+.search-btn {
+  color: $main_color;
+  position: relative;
+  right: 35px;
+  top: 12.5px;
+  padding: 5px 7.5px;
+  height: 32.5px;
 }
 
 .navbar {
-  box-shadow:0 2px 10px #999;
   position: fixed;
   z-index: 10;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #ffffff;
+  border-bottom: 3px solid $main_color;
+  box-sizing: border-box;
+  padding: 6px 0;
+}
+
+.top_logo {
+  width: 60px;
 }
 
 /*通知画面*/
-.bell-shape {
-  position: absolute;
-  top: 10px;
-  color: #87ceeb;
-  rotate: 45deg;
-  transform: rotate(15deg);
+
+.navbar-right-items {
+  margin: 0;
+  padding: 0;
 }
 
+.circle-shape {
+  position: relative;
+  top: -10px;
+  right: 10px;
+  color: $light-blue;
+  width: 12px;
+  height: 12px;
+}
 
-/*-----------------------*/
-/*--検索バー-*/
-/*-----------------------*/
-.search_bar {
-  background-color: #eeeeee;
-  padding: 20px 0;
-  box-sizing:border-box;
-} 
+.nav-link {
+  padding: 5px 10px;
+  color: #808080;
+}
+/*非ログイン時*/
+/*ボタン共通*/
+.nav-btn {
+  color: #fff;
+  padding: 7.5px 20px;
+  border-radius: 5px;
+}
+
+/*登録ボタン*/
+.register-btn {
+  background-color: $light-red;
+}
+/*ログインボタン*/
+.login-btn {
+  background-color: #1ea0c5;
+  margin-left: 10px;
+}
 
 /*-----------------------*/
 /*--フッター--*/
 /*-----------------------*/
+
 footer {
-  background-color: #fff;
+  background-color: #31333d;
   height: 50px;
   width: 100%;
   line-height: 50px;
 }
 
 footer small {
-  color: gray
+  color: #fff;
 }

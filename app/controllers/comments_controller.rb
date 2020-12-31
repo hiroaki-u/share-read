@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @book = @review.book
     render "reviews/show"
   end
 

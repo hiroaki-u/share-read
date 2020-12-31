@@ -1,12 +1,12 @@
 class ReviewsController < ApplicationController
   before_action :require_login
-  before_action :set_review, only: %i[show edit update destroy review_correct_user]
-  before_action :set_book, only: %i[new create edit update destroy]
-  before_action :review_correct_user, only: %i[edit update destroy]
-  before_action :confirm_draft, only: %i[show edit update destroy]
+  before_action :set_review, only: %i[show update destroy review_correct_user]
+  before_action :set_book, only: %i[show create update destroy]
+  before_action :review_correct_user, only: %i[update destroy]
+  before_action :confirm_draft, only: %i[show update destroy]
 
   def index
-    @reviews = Review.all.order(created_at: :desc).page(params[:page]).per(10)
+    @reviews = Review.all.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def show
@@ -14,33 +14,30 @@ class ReviewsController < ApplicationController
     @comment = Comment.new
   end
 
-  def new
-    @review = current_user.reviews.new
-  end
-
   def create
     @review = current_user.reviews.build(review_params)
     if @review.save
+      flash[:success] = "投稿しました"
       redirect_to book_review_path(@book, @review)
     else
-      render :new
+      flash[:danger] = "レビューが空欄です。投稿できませんでした。"
+      redirect_to book_url(@book)
     end
-  end
-
-  def edit
   end
 
   def update
     if @review.update(review_params)
-      redirect_to book_review_path(@book, @review)
+      flash[:success] = "投稿しました"
     else
-      render :edit
+      flash[:danger] = "レビューが空欄です。投稿できませんでした"
     end
+    redirect_to book_review_path(@book, @review)
   end
 
   def destroy
     @review.destroy
-    redirect_back(fallback_location: root_path)
+    flash[:success] = "投稿を削除しました"
+    redirect_to root_url
   end
 
   private

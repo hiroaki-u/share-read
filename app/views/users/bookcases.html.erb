@@ -1,5 +1,11 @@
-<div class="headline mb-5 mt-5">
-  <p class="txt-l mb-1">本棚一覧</p>
-  <p class="headline-bar"></p>
-</div>
-<%= render "partial/book_list", books: @bookcases %>
+<%= render "profile" %>
+<% if @bookcases.present? %>
+  <div class="container mt-5 mb-5">
+    <%= render "partial/book_list", books: @bookcases %>
+    <%= paginate @bookcases %>
+  </div>
+<% else %>
+  <div class="container text-center mt-5 mb-5">
+    <p>本棚にはまだ本がありません。</p>
+  </div>
+<% end %>

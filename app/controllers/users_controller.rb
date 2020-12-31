@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   before_action :self_user, only: %i[edit update draft]
 
   def show
-    @reviews = @user.reviews.where(status: 1)
+    if current_user = @user
+      @reviews = @user.feed_reviews.where(status: 1).order(updated_at: :desc).page(params[:page]).per(6)
+    else
+      @reviews = @user.reviews.where(status: 1).order(updated_at: :desc).page(params[:page]).per(6)
+    end
   end
 
   def new
@@ -17,11 +21,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       redirect_to root_url
-      flash[:notice] = "ユーザー登録完了しました。"
+      flash[:success] = "ユーザー登録完了しました。"
       session[:user_id] = @user.id
     else
       render :new
-      flash[:notice] = "ユーザー登録ができませんでした。"
+      flash.now[:danger] = "ユーザー登録ができませんでした。"
     end
   end
 
@@ -33,8 +37,8 @@ class UsersController < ApplicationController
       flash[:success] = 'プロフィールを変更しました。'
       redirect_to @user
     else
-      flash.now[:danger] = 'プロフィーが変更できませんでした。'
       render :edit
+      flash.now[:danger] = 'プロフィーが変更できませんでした。'
     end
   end
 
@@ -51,11 +55,11 @@ class UsersController < ApplicationController
   end
 
   def bookcases
-    @bookcases = @user.register_books.order(updated_at: :desc).page(params[:page]).per(18)
+    @bookcases = @user.register_books.order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   def draft
-    @draft_reviews = @user.reviews.where(status: 0).page(params[:page]).per(10)
+    @draft_reviews = @user.reviews.where(status: 0).order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   private
