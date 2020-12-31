@@ -44,7 +44,7 @@ RSpec.describe Review, type: :model do
       it "bookが紐付いていないと保存できない" do
         @review.book = nil
         @review.valid?
-        expect(@review.errors.full_messages).to include("Userを入力してください")
+        expect(@review.errors.full_messages).to include("Bookを入力してください")
       end
     end
   end
