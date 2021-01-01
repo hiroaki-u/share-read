@@ -41,8 +41,8 @@
           </div>
           <div class="review-sub mt-2">
             <div class="flex">
-              <div class="favorite_buttons_<%= review.id %>"><%= render "favorites/favorite_button", review: review %></div>
-              <div class="pl-3"><i class="far fa-comment fa-lg"></i><small class="subscript"><%= review.comments.count %></small></div>
+              <div class="favo-comment favorite_buttons_<%= review.id %>"><%= render "favorites/favorite_button", review: review %></div>
+              <div class="favo-comment pl-1"><i class="far fa-comment fa-lg"></i><small class="subscript"><%= review.comments.count %></small></div>
             </div>
             <small class="text-muted"><%= time_ago_in_words(review.updated_at).upcase %>前</small>
           </div>
