@@ -80,3 +80,4 @@ gem 'data-confirm-modal'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
+gem "fog-aws"
