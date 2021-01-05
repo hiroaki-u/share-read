@@ -7,5 +7,6 @@ if Rails.env.production?
       region: "ap-northeast-1"
     }
     config.fog_directory = "share-read-bucket"
+    config.asset_host = "https://static.share-read.jp"
   end
 end
