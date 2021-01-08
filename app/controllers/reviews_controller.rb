@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :require_login
+  before_action :require_login, except: %i[show]
   before_action :set_review, only: %i[show update destroy review_correct_user]
   before_action :set_book, only: %i[show create update destroy]
   before_action :review_correct_user, only: %i[update destroy]
