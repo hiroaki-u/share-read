@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :require_login, only: %i[edit update followings followers favorites bookcases draft]
+  before_action :require_login, only: %i[show edit update followings followers favorites bookcases draft]
   before_action :set_user, only: %i[show edit update followings followers favorites bookcases draft self_user]
   before_action :self_user, only: %i[edit update draft]
 
@@ -34,11 +34,11 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(profile_params)
-      flash[:success] = 'プロフィールを変更しました。'
+      flash[:success] = 'プロフィールを更新しました。'
       redirect_to @user
     else
       render :edit
-      flash.now[:danger] = 'プロフィーが変更できませんでした。'
+      flash.now[:danger] = 'プロフィーを更新できませんでした。'
     end
   end
 

@@ -103,13 +103,23 @@
 .review-radiobutton {
   display: none;
 }
+.review-radiobutton:checked:hover + label {
+  border: 1px solid #f8c5c5 !important;
+  color: #f8c5c5 !important;
+}
+.review-radiobutton:hover + label {
+  border: 1px solid #000;
+  color: #000;
+}
+
 .review-submit label {
   border: 1px solid #dcdcdc;
   color: #999999;
-  padding: 10px 20px;
+  padding: 10px 40px;
   border-radius: 3px;
 }
-.review-radiobutton:checked + label {
+.review-radiobutton:checked + label,
+.review-radiobutton:focus + label {
   border: 1px solid $light-red;
   color: $light-red;
 }

@@ -2,10 +2,10 @@
 <div class="modal-form">
   <%= form_with(model: [@book, @review], local:true) do |f| %>
     <div class="p-4">
-      <%= f.text_area :content, class: "p-2 modal-textarea",id: "review-textarea", placeholder: "ここにレビューを記載してください", rows: 10 %>
+      <%= f.text_area :content, class: "p-2 modal-textarea",id: "review-textarea", placeholder: "ここにレビューを記載してください（1200文字以内）", rows: 10 %>
     </div>
       <%= f.hidden_field :book_id, value: @book.isbn %>
-    <div class="pl-4 pb-4 review-submit">
+    <div class="text-center pb-4 review-submit">
       <%= f.radio_button :status, "draft", class: "review-radiobutton" %>
       <%= f.label :status_draft, "下書き", class: "txt-xxs" %>
       <%= f.radio_button :status, "published", class: "review-radiobutton" %>
