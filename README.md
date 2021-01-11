@@ -7,16 +7,17 @@ Share-readはビジネス本をアウトプットするwebアプリです。<br>
 人に本の内容をshareすることで、本の知識を自分のものにすることを目的としています。
 
 ### 制作背景
-社会人になってから、ビジネス本や自己啓発本を読むようになったのですが、本を読んだらそれで満足してしまっていました。<br>
-そのため、せっかく読んだ本も内容もあまり覚えておりませんでした。
+社会人になってから、ビジネス本や自己啓発本を読むようになりました。<br>
+しかし、読んだらそれっきりになり、せっかく読んだ本の内容もあまり覚えておりませんでした。
 
 ある時アウトプット大全という本を読み、本のアウトプットの重要性を考えさせられました。<br>
-そこで、本の内容をアウトプットするような読書会を開催することにしました。<br>
-読んだ本をまとめて人に共有するという作業だけでも、これまでの読書と打って変わり、本の知識が頭に深く残っていました。<br>
-さらに、業務中も本の知識を活かすことができるようになりました。
+そこで、本の内容をアウトプットするために、読書会に参加することにしました。<br>
+読んだ本をまとめて人に共有するという工程を踏むだけでも、これまでの読書と打って変わり、本の知識が頭に深く残っていました。<br>
+さらに、業務中も本の知識を活かせるようになってきました。<br>
 
-私のように本を読んで終わってしまっている方は、少なからずいらっしゃると思います。<br>
-そのような方が本を読んだ時、より効果を発揮できるように本をアウトプットするアプリを制作しました。
+以前の私のように本を読んで終わってしまっている方は、少なからずいるのではないかと考えました。<br>
+読書というのは読んで終わりではなく、本の知識を自分の知識として使える状態にすることがゴールであると私は考えております。<br>
+そのような考えから本の内容をアウトプットするwebアプリ『Share-read』を開発しようと思いました。
 
 ### URL
 https://share-read.jp
@@ -43,12 +44,11 @@ https://share-read.jp
 ## :computer:操作
 - 本の検索
 
-![本の検索](https://user-images.githubusercontent.com/65746218/103730579-85e09780-5026-11eb-9012-070577db5e60.gif)
+![本の検索](https://user-images.githubusercontent.com/65746218/104142660-d9286080-53ff-11eb-9da4-9fa6770fb84d.gif)
 
 - レビューの投稿
 
-![本のレビュー](https://user-images.githubusercontent.com/65746218/103730603-9133c300-5026-11eb-9e21-26dfc55e2ee0.gif)
-
+![本のレビュー](https://user-images.githubusercontent.com/65746218/104142685-ef362100-53ff-11eb-9074-faae21220200.gif)
 
 ## :open_file_folder:環境・使用技術
 ### フロントエンド
@@ -62,19 +62,23 @@ https://share-read.jp
 
 ### 開発環境
 - Docker/Docker-compose
+- MySQL 5.7
 
 ### 本番環境
-- AWS(VPC、EC2、RDS for MySQL、S3、Cloudfront、ALB、 IAM、Route53）
+- AWS(VPC、EC2、RDS for MySQL、S3、ALB、 IAM、Route53）
+- MySQL 5.7
 - Nginx、puma
 - Capistrano
 
+###ER図
+<img width="625" alt="ER図" src="https://user-images.githubusercontent.com/65746218/104142775-5227b800-5400-11eb-8303-5c2a5ce25fc2.png">
+
 ### インフラ構成図 
-インフラ構成図を記載
+![インフラ構成図](https://user-images.githubusercontent.com/65746218/104142763-45a35f80-5400-11eb-8e1c-1294b41812d8.png)
 
 ## :eyes:Anout me
-Wantedly、Twitter、Qiitaをやっています。
+Wantedly、Qiitaをやっています。
 よろしければご覧になってください。
 
 Wantedly　https://www.wantedly.com/id/hiroaki_ueda_0329
-Twitter　https://twitter.com/junie57576525
-Qiita　https://qiita.com/Hiroaki_jr
+<br>Qiita　https://qiita.com/Hiroaki_jr
