@@ -23,7 +23,7 @@
             <% end %>
             <% if current_user == @review.user %>
               <button class="post-review-button edit-review-btn"><i class="far fa-edit fa-lg"></i></button>
-              <%= link_to [@review.book, @review], method: :delete, data: { confirm: "削除しますか？", cancel: "やめる", commit: "削除する"}, title: "削除確認", class: 'ml-2 mr-2' do  %>
+              <%= link_to [@review.book, @review], method: :delete, data: { confirm: "削除しますか？" }, class: 'ml-2 mr-2' do  %>
                 <i class="fas fa-trash fa-lg"></i>
               <% end %>
             <% end %>

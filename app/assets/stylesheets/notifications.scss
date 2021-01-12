@@ -10,3 +10,18 @@
 .notice-name {
   font-weight: bold;
 }
+
+@media screen and (max-width: 768px) {
+  .notice-message {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .notice-message {
+    font-size: 9px;
+  }
+  .notice-time {
+    font-size: 4px;
+  }
+}

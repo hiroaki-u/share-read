@@ -16,13 +16,19 @@
   background-color: $pale-blue;
   display: inline-block;
   position: absolute;
-  right: 15%;
+  right: 10%;
   border-radius: 10px;
 }
 
 .all-review-btn p {
   padding: 10px 25px;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .all-review-btn p {
+    padding: 5px 15px;
+  }
 }
 
 .review-list {
