@@ -26,3 +26,19 @@
   width: 80%;
   height: 350px;
 }
+
+@media screen and (max-width: 960px) {
+  .books_list {
+    grid-template: auto/ 33% 33% 33%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .books_list {
+    grid-template: auto/ auto;
+  }
+  .partial_book {
+    width: 100%;
+    text-align: center;
+  }
+}

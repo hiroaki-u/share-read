@@ -5,7 +5,7 @@ module UsersHelper
       today = Date.today.strftime("%Y%m%d").to_i
       @age ||= (today-user_birthday)/10000.round
     else
-      @age = "未入力"
+      @age = "-"
     end
   end
 end

@@ -38,7 +38,7 @@ body {
   vertical-align: sub;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 540px) {
   .sm-none {
     display: none;
   }
@@ -47,6 +47,38 @@ body {
 @media screen and (max-width: 768px) {
   .md-none {
     display: none;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .lg-none {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .md-block {
+    display: block !important;
+  }
+}
+
+.md-appear {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .md-appear {
+    display: block;
+  }
+}
+
+.lg-appear {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .lg-appear {
+    display: block !important;
   }
 }
 

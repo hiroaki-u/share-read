@@ -3,7 +3,7 @@
     <div class="container flex">
       <div class="navbar-left flex">
         <%= link_to (image_tag "top_logo", class: "top_logo mr-2"), root_path %>
-        <%= link_to "Share-read", root_path, class: "mr-4 site-title sm-none" %>
+        <%= link_to "Share-read", root_path, class: "mr-4 site-title md-none" %>
         <%= form_tag(books_search_path, method: :get, class: 'flex search-form') do %>
           <%= text_field_tag :title, @title, class: 'form-control search-bar', placeholder: '本のタイトル' %>
           <%= button_tag type: "submit",class: "btn search-btn" do %>

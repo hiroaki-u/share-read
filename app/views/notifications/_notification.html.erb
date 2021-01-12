@@ -23,6 +23,6 @@
           <% end %>
       <% end %>
     </div>
-    <small class="text-muted pl-2"><%= time_ago_in_words(notification.created_at).upcase %>前</small>
+    <small class="text-muted pl-2 notice-time"><%= time_ago_in_words(notification.created_at).upcase %>前</small>
   </div>
 <% end %>

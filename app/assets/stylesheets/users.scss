@@ -128,6 +128,10 @@
   border-bottom: 1px solid #dcdcdc;
 }
 
+.follow-user-content {
+  width: 100%;
+}
+
 .follow-user-info {
   width: 30px;
 }
@@ -154,4 +158,9 @@
 
 .unfollow-btn:hover {
   background-color: #eeeeee;
+}
+
+.follow-user-name {
+  display: flex;
+  justify-content: space-between;
 }

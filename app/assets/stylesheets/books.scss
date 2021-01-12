@@ -4,6 +4,13 @@
   align-items: center;
 }
 
+@media screen and (max-width: 992px) {
+  .book-page-btn {
+    display: block !important;
+    text-align: center;
+  }
+}
+
 .register-submit-btn:focus,
 .unregister-submit-btn:focus,
 .post-review-button:focus {
@@ -50,6 +57,18 @@
   padding: 14px 31px;
   border-radius: 5px;
   border: 1px solid $light-red;
+}
+
+/*-----------------------*/
+/*--購入ボタン--*/
+/*-----------------------*/
+@media screen and (max-width: 992px) {
+  .purchase-btn-content {
+    margin-top: 25px;
+  }
+}
+
+.purchase-btn-content {
 }
 
 .purchase-btn {

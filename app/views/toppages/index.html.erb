@@ -1,9 +1,9 @@
 <% if logged_in? %>
   <div class="topwrapper">
-    <p class="txt-xl topwrapper-login-message">shareして本の知識を自分のものに</p>
+    <p class="txt-xl topwrapper-login-message md-none">shareして本の知識を自分のものに</p>
     <div class="flex topwrapper-logo">
       <%= image_tag("top_logo", class: "top_logo-l") %>
-      <p class="site-title-l pl-3">Share-read</p>
+      <p class="site-title-l sm-none pl-3">Share-read</p>
     </div>
   </div>
   <div class="container review-list mb-5">
@@ -13,7 +13,7 @@
       </div>
       <div class="all-review-btn mt-5">
         <%= link_to reviews_books_path do %>
-          <p class="margin-0">全てのレビュー<i class="fas fa-chevron-right"></i></p>
+          <p class="margin-0"><span class="md-none">全てのレビュー</span><i class="fas fa-chevron-right"></i></p>
         <% end %>
       </div>
     </div>
@@ -26,12 +26,12 @@
 <% else %>
   <div class="topwrapper">
     <div class="concept-message">
-      <p class="concept-message-detail txt-m mb-2">本を読んでそのままになっていませんか？</p>
-      <p class="concept-message-detail txt-m">本の内容をshareして知識を自分のものにしましょう</p>
+      <p class="concept-message-detail md-none txt-m mb-2">本を読んでそのままになっていませんか？</p>
+      <p class="concept-message-detail md-none txt-m">本の内容をshareして知識を自分のものにしましょう</p>
     </div>
     <div class="flex topwrapper-logo">
       <%= image_tag("top_logo", class: "top_logo-l") %>
-      <p class="site-title-l pl-3">Share-read</p>
+      <p class="site-title-l sm-none pl-3">Share-read</p>
     </div>
   </div>
   <div class="container review-list mb-5">
