@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,8 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_042031) do
-
+ActiveRecord::Schema.define(version: 20_201_230_042_031) do
   create_table "bookcases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "read", default: 0, null: false
     t.bigint "book_id", null: false
@@ -19,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_042031) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_bookcases_on_book_id"
-    t.index ["user_id", "book_id"], name: "index_bookcases_on_user_id_and_book_id", unique: true
+    t.index %w[user_id book_id], name: "index_bookcases_on_user_id_and_book_id", unique: true
     t.index ["user_id"], name: "index_bookcases_on_user_id"
   end
 
@@ -50,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_042031) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["review_id"], name: "index_favorites_on_review_id"
-    t.index ["user_id", "review_id"], name: "index_favorites_on_user_id_and_review_id", unique: true
+    t.index %w[user_id review_id], name: "index_favorites_on_user_id_and_review_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
@@ -71,7 +72,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_042031) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
-    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
+    t.index %w[user_id follow_id], name: "index_relationships_on_user_id_and_follow_id", unique: true
     t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 

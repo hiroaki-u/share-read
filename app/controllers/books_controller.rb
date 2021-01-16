@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BooksController < ApplicationController
   before_action :require_login, only: %i[show]
 
@@ -7,31 +9,25 @@ class BooksController < ApplicationController
     @reviews = @book.reviews.where(status: 1).order(updated_at: :desc).page(params[:page]).per(6)
     @review = current_user.reviews.new
   end
-  
+
   def search
     @books = []
     @title = params[:title]
     if @title.present?
-      results = RakutenWebService::Books::Book.search({
-        title: @title,
-      })
+      results = RakutenWebService::Books::Book.search({ title: @title })
       results.each do |result|
         book = Book.new(read(result))
-        bussiness_book_id = ["001001", "001005", "001006", "001008", "001028" ]
-        if bussiness_book_id.any? {|i| book.book_genre_id.include?(i)}
-          @books << book
-        end
+        bussiness_book_id = %w[001001 001005 001006 001008 001028]
+        @books << book if bussiness_book_id.any? { |i| book.book_genre_id.include?(i) }
       end
     end
     @books.each do |book|
-      unless Book.all.include?(book)
-        book.save
-      end
+      book.save unless Book.all.include?(book)
     end
-    
   end
 
   private
+
   def read(result)
     title = result["title"]
     author = result["author"]

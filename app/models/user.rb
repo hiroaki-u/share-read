@@ -1,5 +1,6 @@
-class User < ApplicationRecord
+# frozen_string_literal: true
 
+class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
@@ -27,7 +28,7 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   def feed_reviews
-    Review.where(user_id: self.following_ids + [self.id])
+    Review.where(user_id: following_ids + [id])
   end
 
   def follow(other_user)
@@ -71,12 +72,12 @@ class User < ApplicationRecord
 
   def create_notification_follow(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, "follow"])
-    if temp.blank?
-      notification = current_user.active_notifications.new(
-        visited_id: id,
-        action: "follow"
-      )
-      notification.save if notification.valid?
-    end
+    return unless temp.blank?
+
+    notification = current_user.active_notifications.new(
+      visited_id: id,
+      action: "follow"
+    )
+    notification.save if notification.valid?
   end
 end

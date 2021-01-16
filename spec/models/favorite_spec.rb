@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Favorite, type: :model do
   before do
     @favorite = FactoryBot.build(:favorite)
   end
-  
+
   context "お気に入り登録できる時" do
     it "まだお気に入り登録をしていない時有効" do
       expect(@favorite).to be_valid

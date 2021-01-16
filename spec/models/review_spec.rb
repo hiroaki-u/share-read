@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Review, type: :model do
   before do
     @review = FactoryBot.build(:review)
   end
-  
+
   context "投稿できる時" do
     it "status, contentが正しければ有効" do
       expect(@review).to be_valid

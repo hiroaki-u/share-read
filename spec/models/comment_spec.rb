@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   before do
     @comment = FactoryBot.build(:comment)
   end
-  
+
   context "投稿できる時" do
     it "contentが正しければ有効" do
       expect(@comment).to be_valid

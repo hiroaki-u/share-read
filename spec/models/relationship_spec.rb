@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Relationship, type: :model do
   before do
     @relationship = FactoryBot.build(:relationship)
   end
-  
+
   context "フォローできる時" do
     it "まだフォローしていない時有効" do
       expect(@relationship).to be_valid

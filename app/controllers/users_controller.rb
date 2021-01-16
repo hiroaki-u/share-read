@@ -6,11 +6,12 @@ class UsersController < ApplicationController
   before_action :self_user, only: %i[edit update draft]
 
   def show
-    if current_user = @user
-      @reviews = @user.feed_reviews.where(status: 1).order(updated_at: :desc).page(params[:page]).per(6)
-    else
-      @reviews = @user.reviews.where(status: 1).order(updated_at: :desc).page(params[:page]).per(6)
-    end
+    @reviews =
+      if current_user == @user
+        @user.feed_reviews.where(status: 1).order(updated_at: :desc).page(params[:page]).per(6)
+      else
+        @user.reviews.where(status: 1).order(updated_at: :desc).page(params[:page]).per(6)
+      end
   end
 
   def new
@@ -29,8 +30,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(profile_params)

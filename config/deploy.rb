@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1"
 
 set :application, "share-read"
 set :repo_url, "git@github.com:UJr-creator/share-read.git"
-set :rbenv_ruby, '2.7.2' 
+set :rbenv_ruby, '2.7.2'
 
 set :nginx_config_name, "#{fetch(:application)}.conf"
 set :nginx_sites_enabled_path, "/etc/nginx/conf.d"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
@@ -9,9 +11,6 @@ class ApplicationController < ActionController::Base
   private
 
   def require_login
-    unless logged_in?
-      redirect_to login_url
-    end
+    redirect_to login_url unless logged_in?
   end
-
 end
