@@ -18,7 +18,9 @@ class ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.build(review_params)
+    draft_judge
     if @review.save
+      @review.save
       flash[:success] = "投稿しました"
       redirect_to book_review_path(@book, @review)
     else
@@ -28,6 +30,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    draft_judge
     if @review.update(review_params)
       flash[:success] = "投稿しました"
     else
@@ -62,5 +65,13 @@ class ReviewsController < ApplicationController
 
   def confirm_draft
     redirect_to root_path if @review.draft? && @review.user.id != current_user.id
+  end
+
+  def draft_judge
+    if params[:commit] == "公開する"
+      @review.status = "published"
+    elsif params[:commit] == "下書きする"
+      @review.status = "draft"
+    end
   end
 end

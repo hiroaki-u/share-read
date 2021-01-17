@@ -3,14 +3,14 @@
     <div class="md-none">
       <%= image_tag(@book.image_url, class: "book-image-l") %>
     </div>
-    <div class="ml-3 mt-2">
+    <div class="ml-4 mt-2">
       <p class="txt-m"> <%= @book.title %></p>
-      <p class="txt-author txt-xs thin-font ml-3">著者名：<%= @book.author %></p>
-      <p class="thin-font txt-xs ml-3">本の概要：<br><%= @book.caption %></p>
-        <div class="md-appear text-center">
-    <%= image_tag(@book.image_url, class: "book-image-l") %>
-  </div>
-      <div class="mt-5 ml-4 flex book-page-btn text-center">
+      <p class="txt-author txt-xs thin-font">著者名：<%= @book.author %></p>
+      <p class="sentence-font txt-xs">本の概要：<br><%= @book.caption %></p>
+      <div class="md-appear text-center">
+        <%= image_tag(@book.image_url, class: "book-image-l") %>
+      </div>
+      <div class="mt-5 flex book-page-btn text-center">
         <div class="mr-3 mb-2"><button class="submit-btn post-review-button txt-xs">レビューを書く</button></div>
         <div class="mr-3 mb-2" id="register_buttons_<%= @book.id %>"><%= render "bookcases/register_button" %></div>
         <div class="purchase-btn-content mr-3 mb-2"><%= link_to "楽天購入ページへ", @book.url, class: "purchase-btn" %></div>

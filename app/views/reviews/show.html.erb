@@ -31,10 +31,10 @@
         </div>
         <div class="flex-between">
           <div>
-            <%= simple_format(@review.content, class: "thin-font pr-3") %>
+            <%= link_to (image_tag @review.book.image_url, class: "book-image-l"), book_path(@review.book) %>
           </div>
           <div>
-            <%= link_to (image_tag @review.book.image_url, class: "book-image-l"), book_path(@review.book) %>
+            <%= simple_format(@review.content, class: "sentence-font pl-3") %>
           </div>
         </div>
       </div>
