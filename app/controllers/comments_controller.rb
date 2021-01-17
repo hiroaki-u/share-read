@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :require_login
   before_action :set_comment, only: %i[update edit destroy comment_correct_user]
@@ -34,6 +36,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def set_comment
     @comment = Comment.find(params[:id])
   end

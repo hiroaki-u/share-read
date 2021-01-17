@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -29,7 +31,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("名前を入力してください")
       end
-      
+
       it "nameが20文字より多いとエラーが発生" do
         @user.name = Faker::Name.initials(number: 21)
         @user.valid?
@@ -41,23 +43,23 @@ RSpec.describe User, type: :model do
       it "emailが空であるとエラーが発生" do
         @user.email = nil
         @user.valid?
-        expect(@user.errors.full_messages).to include("メールアドレスを入力してください")        
+        expect(@user.errors.full_messages).to include("メールアドレスを入力してください")
       end
       it "emailが255文字より多いとエラーが発生" do
         @user.email = Faker::Internet.email(name: "a" * 255)
         @user.valid?
-        expect(@user.errors.full_messages).to include("メールアドレスは255文字以内で入力してください")         
+        expect(@user.errors.full_messages).to include("メールアドレスは255文字以内で入力してください")
       end
 
       it "emailに'＠'がないとエラーが発生" do
         @user.email = "aaaaa.aa"
         @user.valid?
-        expect(@user.errors.full_messages).to include("メールアドレスは不正な値です")                 
+        expect(@user.errors.full_messages).to include("メールアドレスは不正な値です")
       end
       it "emailの'＠'の後に'.'がないとエラーが発生" do
         @user.email = "aaaaa@aa"
         @user.valid?
-        expect(@user.errors.full_messages).to include("メールアドレスは不正な値です")              
+        expect(@user.errors.full_messages).to include("メールアドレスは不正な値です")
       end
     end
 
@@ -66,18 +68,18 @@ RSpec.describe User, type: :model do
         @user.password = nil
         @user.password_confirmation = @user.password
         @user.valid?
-        expect(@user.errors.full_messages).to include("パスワードを入力してください") 
+        expect(@user.errors.full_messages).to include("パスワードを入力してください")
       end
       it "passwordが72文字よりも多いとエラーが発生" do
         @user.password = Faker::Internet.password(min_length: 73)
         @user.password_confirmation = @user.password
         @user.valid?
-        expect(@user.errors.full_messages).to include("パスワードは72文字以内で入力してください")   
+        expect(@user.errors.full_messages).to include("パスワードは72文字以内で入力してください")
       end
       it "passwordとpassword_confirmationが一致しないとエラーが発生" do
         @user.password = Faker::Internet.password
         @user.valid?
-        expect(@user.errors.full_messages).to include("確認用パスワードとパスワードの入力が一致しません") 
+        expect(@user.errors.full_messages).to include("確認用パスワードとパスワードの入力が一致しません")
       end
     end
   end

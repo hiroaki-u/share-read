@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Bookcase < ApplicationRecord
   belongs_to :user
   belongs_to :book, primary_key: "isbn"

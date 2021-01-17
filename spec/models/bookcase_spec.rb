@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Bookcase, type: :model do
   before do
     @bookcase = FactoryBot.build(:bookcase)
   end
-  
+
   context "本棚登録できる時" do
     it "まだ本棚登録していない時有効" do
       expect(@bookcase).to be_valid

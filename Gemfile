@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -30,26 +32,29 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rspec-rails'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem "capistrano", "~> 3.10", require: false
+  gem 'capistrano3-puma', '< 5'
   gem "capistrano-rails", "~> 1.6", require: false
   gem 'capistrano-rbenv', '~> 2.2'
   gem 'capistrano-rbenv-vars', '~> 0.1'
-  gem 'capistrano3-puma', '< 5'
+
+  # rubocopの利用
+  gem 'rubocop', require: false
 end
 
 group :test do
@@ -61,23 +66,22 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-#ページネーション
+# ページネーション
 gem 'kaminari'
 
-#メッセージの日本語化
+# メッセージの日本語化
 gem 'rails-i18n'
 
-#楽天apiの取得
+# 楽天apiの取得
 gem 'rakuten_web_service'
 
-#画像投稿
+# 画像投稿
 gem 'carrierwave'
 
-#確認ダイアログ
-gem 'data-confirm-modal'
-gem 'jquery-rails'
+# Boot-strap、jQuery、font-awesomeの利用
 gem 'bootstrap-sass'
-gem "font-awesome-rails"
 gem "fog-aws"
+gem "font-awesome-rails"
+gem 'jquery-rails'

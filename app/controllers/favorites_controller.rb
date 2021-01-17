@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 class FavoritesController < ApplicationController
   before_action :require_login
   before_action :set_review
 
   def create
-    review = @review
     current_user.favor(@review)
     @review.create_notification_favorite(current_user)
   end
@@ -13,6 +14,7 @@ class FavoritesController < ApplicationController
   end
 
   private
+
   def set_review
     @review = Review.find(params[:review_id])
   end

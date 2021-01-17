@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
   before_action :require_login, except: %i[show]
   before_action :set_review, only: %i[show update destroy review_correct_user]
@@ -6,7 +8,7 @@ class ReviewsController < ApplicationController
   before_action :confirm_draft, only: %i[show update destroy]
 
   def index
-    @reviews = Review.all.order(created_at: :desc).page(params[:page]).per(6)
+    @reviews = Review.where(status: 1).order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def show
@@ -41,6 +43,7 @@ class ReviewsController < ApplicationController
   end
 
   private
+
   def review_params
     params.require(:review).permit(:content, :status, :book_id)
   end
@@ -58,6 +61,6 @@ class ReviewsController < ApplicationController
   end
 
   def confirm_draft
-    redirect_to root_path if (@review.draft? && @review.user.id != current_user.id)
+    redirect_to root_path if @review.draft? && @review.user.id != current_user.id
   end
 end

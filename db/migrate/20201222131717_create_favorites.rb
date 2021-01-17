@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFavorites < ActiveRecord::Migration[6.0]
   def change
     create_table :favorites do |t|
@@ -6,7 +8,7 @@ class CreateFavorites < ActiveRecord::Migration[6.0]
 
       t.timestamps
 
-      t.index [:user_id, :review_id], unique: true
+      t.index %i[user_id review_id], unique: true
     end
   end
 end

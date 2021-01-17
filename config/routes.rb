@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   root to: 'toppages#index'
 
   get "signup", to: "users#new"
@@ -22,15 +23,14 @@ Rails.application.routes.draw do
   resources :bookcases, only: %i[create destroy]
 
   get 'books/search', to: "books#search"
-  resources :books, only: %i[show] do 
-    resources :reviews, only: %i[show create update destroy] do 
+  resources :books, only: %i[show] do
+    resources :reviews, only: %i[show create update destroy] do
       resources :comments, only: %i[create update edit destroy]
     end
     collection do
       get "reviews", to: "reviews#index"
     end
   end
-  
-  resources :notifications, only: %i[index]
 
+  resources :notifications, only: %i[index]
 end
