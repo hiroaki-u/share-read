@@ -18,7 +18,7 @@
         <div class="pl-3">
           <p class="mb-1"><%= review.book.title %></p>
           <p class="thin-font txt-xxs txt-author"><%= review.book.author %></p>
-          <%= simple_format(strip_tags(review.content).truncate(80), class:"thin-font margin-0") %>
+          <%= simple_format(strip_tags(review.content).truncate(80), class:"sentence-font margin-0") %>
         </div>
       </div>
     <% end %>
