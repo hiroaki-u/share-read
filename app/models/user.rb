@@ -28,7 +28,7 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   def feed_reviews
-    Review.where(user_id: following_ids + [id])
+    Review.where(user_id: following_ids + [id]).includes(:user, :book)
   end
 
   def follow(other_user)

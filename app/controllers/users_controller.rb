@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       if current_user == @user
         @user.feed_reviews.where(status: 1).order(updated_at: :desc).page(params[:page]).per(6)
       else
-        @user.reviews.where(status: 1).order(updated_at: :desc).page(params[:page]).per(6)
+        @user.reviews.where(status: 1).includes(:user, :book).order(updated_at: :desc).page(params[:page]).per(6)
       end
   end
 
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   end
 
   def draft
-    @draft_reviews = @user.reviews.where(status: 0).order(updated_at: :desc).page(params[:page]).per(10)
+    @draft_reviews = @user.reviews.where(status: 0).includes(:user, :book).order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   private
