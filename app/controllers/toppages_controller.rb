@@ -2,6 +2,6 @@
 
 class ToppagesController < ApplicationController
   def index
-    @reviews = Review.where(status: 1).order(updated_at: :desc)
+    @reviews = Review.where(status: 1).includes(:book, :user).order(updated_at: :desc)
   end
 end

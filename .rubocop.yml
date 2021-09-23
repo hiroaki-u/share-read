@@ -20,3 +20,6 @@ Documentation:
 
 Style/StringLiterals:
   Enabled: false
+
+AllCops:
+  SuggestExtensions: false

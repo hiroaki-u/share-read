@@ -8,11 +8,11 @@ class ReviewsController < ApplicationController
   before_action :confirm_draft, only: %i[show update destroy]
 
   def index
-    @reviews = Review.where(status: 1).order(created_at: :desc).page(params[:page]).per(6)
+    @reviews = Review.where(status: 1).includes(:book, :user).order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def show
-    @comments = @review.comments.order(id: :desc)
+    @comments = @review.comments.includes(:book, :user).order(id: :desc)
     @comment = Comment.new
   end
 
@@ -68,9 +68,10 @@ class ReviewsController < ApplicationController
   end
 
   def draft_judge
-    if params[:commit] == "公開する"
+    case params[:commit]
+    when "公開する"
       @review.status = "published"
-    elsif params[:commit] == "下書きする"
+    when "下書きする"
       @review.status = "draft"
     end
   end
